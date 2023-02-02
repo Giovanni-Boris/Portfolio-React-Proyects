@@ -4,19 +4,18 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-
-
-
-const uri = `mongodb+srv://${process.env.USER_NAME}:${process.env.PASSWORD}@cluster0.gyngb.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
-
+mongoose.set('strictQuery', false);
 dotenv.config();
+
+
+const uri = `mongodb+srv://boris-social:qj1DKhAfBDs5gwLI@cluster0.gyngb.mongodb.net/social?retryWrites=true&w=majority
+
+`;
 
 const option = { useNewUrlParser: true, useUnifiedTopology: true}
 
-console.log(process.env.USER_NAME,process.env.DBNAME);
-
 mongoose.connect(uri,option)
-	.then(()=> console.log('Base de datos conectada'))
+	.then(()=> console.log('Conected to mongoDB '))
 	.catch(error => console.log('Error db: ', error))
 
 app.listen(8800,()=>{

@@ -10,7 +10,7 @@ require("dotenv").config()
 
 mongoose.set('strictQuery', false);
 
-console.log(process.env.URL_MONGO)
+//console.log(process.env.URL_MONGO)
 
 const uri = `mongodb+srv://boris-social:qj1DKhAfBDs5gwLI@cluster0.gyngb.mongodb.net/social?retryWrites=true&w=majority
 

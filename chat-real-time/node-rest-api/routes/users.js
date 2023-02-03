@@ -3,7 +3,7 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 //update user
 router.put("/:id", async(req,res)=>{
-	if(req.body.userId === req.params.id  || req.user.isAdmin){
+	if(req.body.userId === req.params.id  || req.body.isAdmin){
 		if(req.body.password){
 			try{
 				const salt = await bcrypt.genSalt(10);
@@ -19,11 +19,39 @@ router.put("/:id", async(req,res)=>{
 			});
 			res.status(200).json("account has been updated");
 		} catch (err){
-			res.status(500).json(err);
+			return res.status(500).json(err);
 		}
 	} else {
 		return res.status(403).json("You can update only your account");
 	}
 });
+//delete
+router.delete("/:id", async(req,res)=>{
+	if(req.body.userId === req.params.id  || req.body.isAdmin){
+		try{
+			await User.findByIdAndDelete(req.params.id);
+			return res.status(200).json("account has been deleted");
+		} catch (err){
+			return res.status(500).json(err);
+		}
+	} else {
+		return res.status(403).json("You can delete only your account");
+	}
+});
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

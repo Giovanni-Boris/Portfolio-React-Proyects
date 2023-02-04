@@ -6,6 +6,8 @@ const Post = ({ post }) => {
 	const user = Users.filter((u) => u.id === post?.userId)[0];
 	const [like, setLike] = useState(post.like);
 	const [isLiked, setIsLiked] = useState(false);
+	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+	//console.log("Pf", PF);
 	const handleLike = (e) => {
 		setLike(isLiked ? like - 1 : like + 1);
 		setIsLiked(!isLiked);
@@ -17,7 +19,7 @@ const Post = ({ post }) => {
 					<div className="postTopLeft">
 						<img
 							className="postProfileImg"
-							src={`/assets/${user.profilePicture}`}
+							src={PF + user.profilePicture}
 							alt=""
 						/>
 						<span className="postUsername">{user.username}</span>
@@ -29,23 +31,19 @@ const Post = ({ post }) => {
 				</div>
 				<div className="postCenter">
 					<span className="postText">{post?.desc}</span>
-					<img
-						className="postImg"
-						src={`/assets/${post.photo}`}
-						alt=""
-					/>
+					<img className="postImg" src={PF + post.photo} alt="" />
 				</div>
 				<div className="postBottom">
 					<div className="postBottomLeft">
 						<img
 							className="likeIcon"
-							src="/assets/like.png"
+							src={PF + "like.png"}
 							alt=""
 							onClick={handleLike}
 						/>
 						<img
 							className="likeIcon"
-							src="assets/heart.png"
+							src={PF + "heart.png"}
 							alt=""
 							onClick={handleLike}
 						/>

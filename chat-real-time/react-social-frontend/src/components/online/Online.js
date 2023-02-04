@@ -1,4 +1,4 @@
-import React from "react";
+import "./online.css";
 
 const Online = ({ user }) => {
 	return (

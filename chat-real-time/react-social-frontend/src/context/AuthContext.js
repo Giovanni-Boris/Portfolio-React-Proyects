@@ -6,11 +6,10 @@ const INITIAL_STATE = {
 	error: false,
 };
 
-export const AuthContext = createContext(INITIAL_STATE);
+export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
-
 	return (
 		<AuthContext.Provider
 			value={{

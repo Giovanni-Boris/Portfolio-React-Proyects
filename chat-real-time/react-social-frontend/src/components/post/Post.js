@@ -12,7 +12,7 @@ const Post = ({ post }) => {
 	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 	useEffect(() => {
 		const fetchUser = async () => {
-			const res = await axios.get(`/users/${post.userId}`);
+			const res = await axios.get(`/users?userId=${post.userId}`);
 			setUser(res.data);
 		};
 		fetchUser();
@@ -30,8 +30,9 @@ const Post = ({ post }) => {
 							<img
 								className="postProfileImg"
 								src={
-									PF + user.profilePicture ||
-									PF + "person/noAvatar.png"
+									user.profilePicture
+										? PF + user.profilePicture
+										: PF + "person/noAvatar.png"
 								}
 								alt=""
 							/>

@@ -20,11 +20,11 @@ const Feed = ({ username }) => {
 		};
 		fetchPosts();
 	}, [username, user._id]);
-	console.log(username);
+
 	return (
 		<div className="feed">
 			<div className="feedWrapper">
-				<Share />
+				{username === user.username && <Share />}
 				{posts.map((el, index) => (
 					<Post key={index} post={el} />
 				))}

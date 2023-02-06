@@ -10,10 +10,11 @@ const ProfileRightbar = ({ user }) => {
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [followed, setFollowed] = useState(false);
-
   useEffect(() => {
-    setFollowed(currentUser.followings.includes(user?.id));
-  }, [currentUser, user._id]);
+    console.log("Renderizando");
+    setFollowed(currentUser.followings.includes(user?._id));
+  }, [currentUser, user?._id]);
+
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -26,22 +27,23 @@ const ProfileRightbar = ({ user }) => {
       }
     };
     getFriends();
-  }, [user._id]);
+  }, [user]);
   const handleClick = async (e) => {
+    console.log(followed);
     try {
       if (followed) {
-        await axios.put("/users" + user._id + "/follow", {
-          userId: currentUser,
+        await axios.put(`/users/${user._id}/unfollow`, {
+          userId: currentUser._id,
         });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put("/users" + user._id + "/unfollow", {
-          userId: currentUser,
+        await axios.put(`/users/${user._id}/follow`, {
+          userId: currentUser._id,
         });
+        dispatch({ type: "FOLLOW", payload: user._id });
       }
-    } catch (err) {
-      console.log(err);
-    }
-    setFollowed(!followed);
+      setFollowed(!followed);
+    } catch (err) {}
   };
   return (
     <>

@@ -1,22 +1,38 @@
-import { useContext, useRef, useState } from "react";
 import "./share.css";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import LabelIcon from "@mui/icons-material/Label";
 import RoomIcon from "@mui/icons-material/Room";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import CancelIcon from "@mui/icons-material/Cancel";
+import { useContext, useState, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-const Share = async () => {
+
+const Share = () => {
 	const { user } = useContext(AuthContext);
-	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 	const desc = useRef();
+	const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 	const [file, setFile] = useState(null);
+	//console.log(file)
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const newPost = {
 			userId: user._id,
 			desc: desc.current.value,
 		};
+		if (file) {
+			const data = new FormData();
+			const fileName = Date.now() + file.name;
+			console.log(fileName, file);
+			data.append("file", file, fileName);
+			newPost.img = fileName;
+			try {
+				await axios.post("/upload", data);
+				window.location.reload();
+			} catch (err) {
+				console.log(err);
+			}
+		}
 		try {
 			await axios.post("/posts", newPost);
 		} catch (err) {
@@ -45,6 +61,19 @@ const Share = async () => {
 					/>
 				</div>
 				<hr className="shareHr" />
+				{/*file && (
+					<div className="shareImgContainer">
+						<img
+							className="shareImg"
+							src={URL.createObjectURL(file)}
+							alt=""
+						/>
+						<CancelIcon
+							className="shareCancelImg"
+							onClick={() => setFile(null)}
+						/>
+					</div>
+				)*/}
 				<form className="shareBottom" onSubmit={handleSubmit}>
 					<div className="shareOptions">
 						<label htmlFor="file" className="shareOption">
@@ -56,11 +85,11 @@ const Share = async () => {
 								Photo or Video
 							</span>
 							<input
+								style={{ display: "none" }}
 								type="file"
 								id="file"
 								accept=".png,.jpeg,.jpg"
 								onChange={(e) => setFile(e.target.files[0])}
-								style={{ display: "none" }}
 							/>
 						</label>
 						<div className="shareOption">

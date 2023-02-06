@@ -16,6 +16,7 @@ const ProfileRightbar = ({ user }) => {
   }, [currentUser, user?._id]);
 
   useEffect(() => {
+    if (!user) return;
     const getFriends = async () => {
       try {
         //console.log("error1");

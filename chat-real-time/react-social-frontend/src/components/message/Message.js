@@ -1,6 +1,6 @@
 import "./message.css";
-
-const Message = ({ own }) => {
+import moment from "moment";
+const Message = ({ message, own }) => {
 	return (
 		<div className={own ? "message own" : "message"}>
 			<div className="messageTop">
@@ -10,10 +10,10 @@ const Message = ({ own }) => {
 					alt=""
 				/>
 				<p className="messageText">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+					{moment(message.createdAt).fromNow()}
 				</p>
 			</div>
-			<div className="messageBottom">1 hour ago</div>
+			<div className="messageBottom"></div>
 		</div>
 	);
 };

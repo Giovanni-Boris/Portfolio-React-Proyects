@@ -8,6 +8,8 @@ import axios from "axios";
 import { useState, useContext, useEffect } from "react";
 const Messenger = () => {
   const [conversations, setConversations] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -35,32 +37,28 @@ const Messenger = () => {
         </div>
         <div className="chatBox">
           <div className="chatBoxWrapper">
-            <div className="chatBoxTop">
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-              <Message />
-            </div>
-            <div className="chatBoxBottom">
-              <textarea
-                className="chatMessageInput"
-                placeholder="write something"
-              ></textarea>
-              <button className="chatSubmitButton">Send</button>
-            </div>
+            {currentChat ? (
+              <>
+                <div className="chatBoxTop">
+                  {messages.map((m, index) => (
+                    <div>
+                      <Message />
+                    </div>
+                  ))}
+                </div>
+                <div className="chatBoxBottom">
+                  <textarea
+                    className="chatMessageInput"
+                    placeholder="write something..."
+                  ></textarea>
+                  <button className="chatSubmitButton">Send</button>
+                </div>
+              </>
+            ) : (
+              <span className="noConversationText">
+                Open a conversation to start
+              </span>
+            )}
           </div>
         </div>
         <div className="chatOnline">

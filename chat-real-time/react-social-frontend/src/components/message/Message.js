@@ -9,11 +9,11 @@ const Message = ({ message, own }) => {
 					src="/assets/person/10.jpeg"
 					alt=""
 				/>
-				<p className="messageText">
-					{moment(message.createdAt).fromNow()}
-				</p>
+				<p className="messageText">{message.text}</p>
 			</div>
-			<div className="messageBottom"></div>
+			<div className="messageBottom">
+				{moment(message.createdAt).fromNow()}
+			</div>
 		</div>
 	);
 };

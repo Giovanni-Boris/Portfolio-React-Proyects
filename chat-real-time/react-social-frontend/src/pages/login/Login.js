@@ -7,7 +7,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const Login = () => {
 	const email = useRef();
 	const password = useRef();
-	const { user, isFetching, error, dispatch } = useContext(AuthContext);
+	const { isFetching, dispatch } = useContext(AuthContext);
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		loginCall(

@@ -12,7 +12,8 @@ router.post("/", async (req, res) => {
 		res.status(500).json(err);
 	}
 });
-router.get("/", async (req, res) => {
+
+router.get("/:conversationId", async (req, res) => {
 	try {
 		const messages = await Message.find({
 			conversationId: req.params.conversationId,
@@ -22,4 +23,5 @@ router.get("/", async (req, res) => {
 		res.status(500).json(err);
 	}
 });
+
 module.exports = router;

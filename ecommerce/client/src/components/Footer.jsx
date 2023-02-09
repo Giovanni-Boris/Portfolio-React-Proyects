@@ -15,7 +15,7 @@ const Left = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 20x;
+  padding: 20px;
 `;
 
 const Logo = styled.div``;
@@ -55,7 +55,7 @@ const List = styled.ul`
 
 const ListItem = styled.li`
   width: 50%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 const Right = styled.div`
   flex: 1;

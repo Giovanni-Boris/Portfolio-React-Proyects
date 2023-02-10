@@ -8,6 +8,7 @@ const cors = require("cors");
 //Routes
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
+const productRoute = require("./routes/product");
 dotenv.config();
 mongoose.set("strictQuery", false);
 
@@ -33,6 +34,7 @@ app.use(morgan("common"));
 
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
+app.use("/api/products", productRoute);
 
 //console.log(process.env.PORT);
 app.listen(process.env.PORT || 5000, () => {

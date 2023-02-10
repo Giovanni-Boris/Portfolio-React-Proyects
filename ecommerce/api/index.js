@@ -6,24 +6,26 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 //Routes
-const userRoute = require("./routes/user");
+const userRoute = require('./routes/user')
 const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
+const cartRoute = require("./routes/cart");
+const orderRoute = require("./routes/order");
 dotenv.config();
 mongoose.set("strictQuery", false);
 
 //console.log(process.env.MONGO_URL);
 const option = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose
-	.connect(process.env.MONGO_URL, option)
-	.then(() => console.log("DB connection successfull"))
-	.catch((error) => console.log("Error db: ", error));
+  .connect(process.env.MONGO_URL, option)
+  .then(() => console.log("DB connection successfull"))
+  .catch((error) => console.log("Error db: ", error));
 
 //midleware
 // cors
 const corsOption = {
-	origin: "#",
-	optionsSuccessStatus: 200,
+    origin: "#",
+    optionsSuccessStatus: 200,
 };
 //other host can be reach to my api
 app.use(cors({ corsOption }));
@@ -33,10 +35,13 @@ app.use(express.json());
 app.use(morgan("common"));
 
 app.use("/api/auth", authRoute);
-app.use("/api/user", userRoute);
+app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
+app.use("/api/carts", cartRoute);
+app.use("/api/orders", orderRoute);
+
 
 //console.log(process.env.PORT);
 app.listen(process.env.PORT || 5000, () => {
-	console.log("ken server is running!");
+  console.log("ken server is running!");
 });

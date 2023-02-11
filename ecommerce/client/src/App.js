@@ -17,7 +17,6 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/products/:category" element={<ProductList />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
@@ -27,8 +26,9 @@ function App() {
           />
           <Route
             path="/login"
-            element={user ? <Navigate to="" /> : <Login />}
+            element={user ? <Navigate to="/" /> : <Login />}
           />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </div>

@@ -5,7 +5,8 @@ import Products from "../components/Products";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
-
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 const Container = styled.div``;
 
 const Title = styled.h1`
@@ -39,7 +40,18 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
-  const handleFilters = () => {};
+  let { category } = useParams();
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState();
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
+  console.log("RenderinProductList ");
   return (
     <Container>
       <Navbar />
@@ -48,7 +60,7 @@ const ProductList = () => {
       <FilterContainer>
         <Filter>
           <FilterText>Filter Products:</FilterText>
-          <Select name="color">
+          <Select name="color" onChange={handleFilters}>
             <Option disabled>Color</Option>
             <Option>white</Option>
             <Option>black</Option>
@@ -68,7 +80,7 @@ const ProductList = () => {
         </Filter>
         <Filter>
           <FilterText>Sort Products:</FilterText>
-          <Select name="order">
+          <Select name="order" onChange={(e) => setSort(e.target.value)}>
             <Option disabled value="newest">
               Newest
             </Option>
@@ -77,7 +89,7 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products cat={category} filters={filters} sort={sort} />
       <NewsLetter />
       <Footer />
     </Container>

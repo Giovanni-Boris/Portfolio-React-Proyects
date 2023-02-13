@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
-
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/apiCalls";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -49,6 +51,11 @@ const Button = styled.button`
   cursor: pointer;
   margin: auto;
   ${mobile({ margin: "10px auto" })}
+
+  &:disabled {
+    color: green;
+    cursor: not-allowed;
+  }
 `;
 
 const Link = styled.a`
@@ -59,15 +66,48 @@ const Link = styled.a`
   margin-bottom: 10px;
 `;
 
-const Register = () => {
+const Error = styled.span`
+  color: red;
+`;
+const initialState = {
+  username: "",
+  password: "",
+};
+const Login = () => {
+  const [form, setForm] = useState(initialState);
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(dispatch, { ...form });
+  };
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
-        <Form>
-          <Input name="username" placeholder="username" />
-          <Input name="password" type="password" placeholder="password" />
-          <Button type="submit">LOGIN</Button>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            name="username"
+            placeholder="username"
+            onChange={handleChange}
+          />
+          <Input
+            name="password"
+            type="password"
+            placeholder="password"
+            onChange={handleChange}
+          />
+          <Button type="submit" disabled={isFetching}>
+            LOGIN
+          </Button>
+          {error && <Error>Something went wrong.</Error>}
           <Link>DO NOT YOU REMEMBER THE PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>
@@ -76,4 +116,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

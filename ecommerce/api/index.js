@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 //Routes
-const userRoute = require('./routes/user')
+const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
 const cartRoute = require("./routes/cart");
@@ -26,8 +26,8 @@ mongoose
 //midleware
 // cors
 const corsOption = {
-    origin: "#",
-    optionsSuccessStatus: 200,
+  origin: "#",
+  optionsSuccessStatus: 200,
 };
 //other host can be reach to my api
 app.use(cors({ corsOption }));
@@ -43,8 +43,7 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/checkout", stripeRoute);
 
-
 //console.log(process.env.PORT);
 app.listen(process.env.PORT || 5000, () => {
-  console.log("ken server is running!");
+  console.log("ken server is running! ", process.env.PORT);
 });

@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const Chart = ({ title, data, dataKey }) => {
+const Chart = ({ title, data, dataKey, grid }) => {
   return (
     <div className="chart">
       <h3 className="chartTitle">{title}</h3>
@@ -17,7 +17,7 @@ const Chart = ({ title, data, dataKey }) => {
           <XAxis dataKey="name" stroke="#5550bd" />
           <Line type="monotone" dataKey={dataKey} stroke="#5550bd" />
           <Tooltip />
-          <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />
+          {grid && <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />}
         </LineChart>
       </ResponsiveContainer>
     </div>

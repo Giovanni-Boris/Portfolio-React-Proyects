@@ -1,6 +1,5 @@
-import "./Login.css";
 import { useState } from "react";
-import { useDispatch } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
 
 const initialState = {
@@ -22,10 +21,43 @@ const Login = () => {
     login(dispatch, form);
   };
   return (
-    <div className="login">
-      <input type="text" placeholder="username" onChange={handleChange} />
-      <input type="password" placeholder="password" onChange={handleChange} />
-      <button onClick={handleClick}>Login</button>
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <input
+        style={{ padding: 10, marginBottom: 20 }}
+        name="username"
+        type="text"
+        placeholder="username"
+        onChange={handleChange}
+      />
+      <input
+        style={{ padding: 10, marginBottom: 20 }}
+        name="password"
+        type="password"
+        placeholder="password"
+        onChange={handleChange}
+      />
+      <button
+        onClick={handleClick}
+        style={{
+          padding: 10,
+          width: 100,
+          backgroundColor: "teal",
+          color: "#fff",
+          borderRadius: "5px",
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        Login
+      </button>
     </div>
   );
 };

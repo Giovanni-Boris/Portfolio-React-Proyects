@@ -1,5 +1,5 @@
-import Topbar from "../../components/topbar/Topbar";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/Navbar/Navbar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import "./dashboard.css";
 import Home from "../home/Home";
 import UserList from "../userList/UserList";
@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 const Dashboard = () => {
   return (
     <>
-      <Topbar />
+      <Navbar />
       <div className="container">
         <Sidebar />
         <Routes>

@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/dashboard/Dashboard";
 function App() {
-  const admin = JSON.parse(
-    JSON.parse(localStorage.getItem("persist:root")).user
-  ).currentUser.isAdmin;
+  const admin = true;
   return (
     <Router>
       <Routes>

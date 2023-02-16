@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 const UserList = () => {
   const [data, setData] = useState(userRows);
-
+  console.log("Show");
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
@@ -47,7 +47,7 @@ const UserList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/user/" + params.row.id}>
+            <Link to={"/dashboard/user/" + params.row.id}>
               <button className="userListEdit">Edit</button>
             </Link>
             <DeleteOutlineIcon

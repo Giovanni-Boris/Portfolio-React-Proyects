@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   username: "",
   password: "",
 };
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [form, setForm] = useState(initialState);
   const handleChange = (e) => {
@@ -19,6 +21,7 @@ const Login = () => {
   const handleClick = () => {
     //
     login(dispatch, form);
+    navigate("/dashboard");
   };
   return (
     <div

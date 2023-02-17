@@ -37,7 +37,7 @@ export const getProducts = async (dispatch, user) => {
 export const deleteProducts = async (dispatch, id) => {
   dispatch(deleteProductStart());
   try {
-    //const res = await userRequest.delete("/products" + id);
+    //const res =  await userRequest.delete("/products" + id);
     dispatch(deleteProductSuccess(id));
   } catch (err) {
     dispatch(deleteProductFailure());

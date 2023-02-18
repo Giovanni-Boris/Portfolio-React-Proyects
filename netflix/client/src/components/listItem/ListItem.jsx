@@ -7,8 +7,7 @@ import { useState } from "react";
 
 const ListItem = ({ index }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const trailer =
-    "https://www.google.com/search?q=trailer+it+enlace&client=safari&rls=en&biw=787&bih=665&ei=fvbwY4WNHsi45OUPkr2auAw&ved=0ahUKEwiFxM7puJ_9AhVIHLkGHZKeBscQ4dUDCA4&uact=5&oq=trailer+it+enlace&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIFCCEQoAE6CggAEEcQ1gQQsAM6CQgAEBYQHhDxBDoICAAQFhAeEA86BggAEBYQHjoFCAAQgAQ6BwgAEA0QgAQ6BggAEB4QDToLCAAQCBAeEA0Q8QQ6CwghEBYQHhDxBBAdOgcIIRCgARAKSgQIQRgAUOoEWPMtYP0xaAVwAXgAgAG5AYgB2QuSAQQyLjExmAEAoAEByAEDwAEB&sclient=gws-wiz-serp#fpstate=ive&vld=cid:400a30a8,vid:SF832fGsNxo";
+  const trailer = "";
   return (
     <div
       className="listItem"
@@ -22,7 +21,7 @@ const ListItem = ({ index }) => {
       />
       {isHovered && (
         <>
-          <video src={""} autoPlay={true} loop />
+          <video src={trailer} autoPlay={true} loop />
           <div className="itemInfo">
             <div className="icons">
               <PlayArrowIcon className="icon" />

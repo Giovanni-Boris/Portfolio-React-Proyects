@@ -28,4 +28,31 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
+//GET
+router.get("/", verifyToken, async (req, res) => {
+  const typeQuery = req.query.type;
+  const genreQuery = req.query.genre;
+  let list = [];
+  try{
+    if(typeQuery){
+      if(genreQuery){
+        list = await List.aggregate([
+          { $sample: { size: 10 } },
+          { $match: { type: typeQuery, genre: genreQuery } },
+        ]);
+      } else {
+        list = await List.aggregate([
+          { $sample: { size: 10 } },
+          { $match: { type: typeQuery } },
+        ]);
+      }
+    }else{
+      list = await List.aggregate([{ $sample: { size:10 }}])
+    }
+    res.status(200).json(list);
+  }catch(err){
+    console.log(err);
+    res.status(500).json(err);
+  }
+
 module.exports = router;

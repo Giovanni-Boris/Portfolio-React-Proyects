@@ -3,6 +3,7 @@ const Movie = require("../models/Movie");
 const {
   verifyTokenAndAuthorization,
   verifyTokenAndAdmin,
+  verifyToken,
 } = require("./verifyToken");
 
 //created
@@ -13,7 +14,7 @@ route.post("/", verifyTokenAndAdmin, async (req, res) => {
     const savedMovie = await newMovie.save();
     res.status(201).json(savedMovie);
   } catch (err) {
-    res.status(500).json(500);
+    res.status(500).json(err);
   }
 });
 
@@ -27,9 +28,29 @@ route.put("/:id", verifyTokenAndAdmin, async (req, res) => {
       },
       { new: true }
     );
-    res.status(201).json(updateMovie);
+    res.status(200).json(updateMovie);
   } catch (err) {
-    res.status(500).json(500);
+    res.status(500).json(err);
+  }
+});
+
+//DELETE
+route.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    await Movie.findByIdAndDelete(req.params.id);
+    res.status(200).json("The movies has been deleted");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//GET
+route.get("/:id", verifyToken, async (req, res) => {
+  try {
+    const movie = await Movie.findById(req.params.id);
+    res.status(200).json(movie);
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 

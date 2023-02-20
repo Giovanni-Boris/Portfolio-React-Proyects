@@ -1,4 +1,3 @@
-import Login from "./pages/login/Login";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,7 +14,7 @@ function App() {
       <Routes>
         <Route
           path="/login"
-          element={!user ? <Login /> : <Navigate to="/dashboard/" />}
+          element={!user ? <Dashboard /> : <Navigate to="/dashboard/" />}
         />
         <Route
           path="/dashboard/*"

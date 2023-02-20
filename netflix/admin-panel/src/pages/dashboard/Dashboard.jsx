@@ -1,7 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import "./dashboard.css";
-import Home from "../home/Home";
+import Home from "../Home/Home";
 import UserList from "../userList/UserList";
 import User from "../user/User";
 import NewUser from "../newUser/NewUser";

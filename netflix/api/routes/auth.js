@@ -36,7 +36,7 @@ router.post("/login", async (req, res) => {
     if (OriginalPassword !== req.body.password)
       return res.status(401).json("Wrong credentials!");
 
-    const accessToekn = jwt.sign(
+    const accessToken = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
       process.env.SECRET_KEY,
       {
@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
     );
 
     const { password, ...others } = user._doc;
-
+    console.log(accessToken);
     res.status(200).json({ ...others, accessToken });
   } catch (err) {
     res.status(500).json(err);

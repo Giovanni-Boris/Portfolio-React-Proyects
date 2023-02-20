@@ -1,8 +1,28 @@
 import "./featured.scss";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-
+import { useState, useEffect } from "react";
+import { userRequest } from "../../requestMethods";
 const Featured = ({ type }) => {
+  const [content, setContent] = useState([]);
+
+  useEffect(() => {
+    const getRandomContent = async () => {
+      try {
+        const res = await userRequest.get(`movies/random?type=${type}`);
+        console.log(res.data);
+        setContent(res.data[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomContent();
+  }, [type]);
+  /*
+  src="https://cdn.traileraddict.com/content/warner-bros-pictures/it-2017-poster-2.jpg"
+          src="https://i.pinimg.com/originals/de/43/bc/de43bc6e33d4b04f98be83028f621a06.jpg"
+
+*/
   return (
     <div className="featured">
       {type && (
@@ -26,16 +46,10 @@ const Featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img
-        src="https://cdn.traileraddict.com/content/warner-bros-pictures/it-2017-poster-2.jpg"
-        alt=""
-      />
+      <img src={content.img} alt="" />
       <div className="info">
-        <img
-          src="https://i.pinimg.com/originals/de/43/bc/de43bc6e33d4b04f98be83028f621a06.jpg"
-          alt=""
-        />
-        <span className="desc">Lorem</span>
+        <img src={content.imgSm} alt="" />
+        <span className="desc">{content.desc}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrowIcon />

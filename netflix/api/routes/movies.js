@@ -7,7 +7,7 @@ const {
 } = require("./verifyToken");
 
 //created
-route.post("/", verifyTokenAndAdmin, async (req, res) => {
+router.post("/", verifyTokenAndAdmin, async (req, res) => {
   const newMovie = new Movie(req.body);
 
   try {
@@ -19,7 +19,7 @@ route.post("/", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //UPDATE
-route.put("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const updateMovie = await Movie.findByIdAndUpdate(
       req.params.id,
@@ -35,7 +35,7 @@ route.put("/:id", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //DELETE
-route.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     await Movie.findByIdAndDelete(req.params.id);
     res.status(200).json("The movies has been deleted");
@@ -45,7 +45,7 @@ route.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
 });
 
 //GET
-route.get("/find/:id", verifyToken, async (req, res) => {
+router.get("/find/:id", verifyToken, async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
     res.status(200).json(movie);
@@ -55,7 +55,7 @@ route.get("/find/:id", verifyToken, async (req, res) => {
 });
 
 //GET RAMDOM
-route.get("/random", verifyToken, async (req, res) => {
+router.get("/random", verifyToken, async (req, res) => {
   const type = req.query.type;
   let movie;
   try {
@@ -77,7 +77,7 @@ route.get("/random", verifyToken, async (req, res) => {
 });
 
 //GET ALL
-route.get("/", verifyTokenAndAdmin, async (req, res) => {
+router.get("/", verifyTokenAndAdmin, async (req, res) => {
   try {
     const movies = await Movie.find();
     res.status(200).json(movies.reverse());

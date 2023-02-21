@@ -22,8 +22,8 @@ const Dashboard = () => {
           <Route path="/user/:userId" element={<User />} />
           <Route path="/newUser" element={<NewUser />} />
           <Route path="/movies" element={<ProductList />} />
-          <Route path="/movies/:productId" element={<Product />} />
-          <Route path="/newproduct" element={<NewProduct />} />
+          <Route path="/movie/:movieId" element={<Product />} />
+          <Route path="/newMovie" element={<NewProduct />} />
         </Routes>
       </div>
     </>

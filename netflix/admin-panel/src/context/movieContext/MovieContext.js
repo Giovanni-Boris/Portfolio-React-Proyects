@@ -1,5 +1,5 @@
 import movieReducer from "./movieReducer";
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer } from "react";
 
 const initialState = {
   movies: [],

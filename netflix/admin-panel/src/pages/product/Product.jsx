@@ -12,7 +12,7 @@ const Product = () => {
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Movie</h1>
-        <Link to="/dashboard/newproduct">
+        <Link to="/dashboard/newMovie">
           <button className="productAddButton">Create</button>
         </Link>
       </div>

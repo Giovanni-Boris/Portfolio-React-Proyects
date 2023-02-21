@@ -5,6 +5,9 @@ import {
   deleteMovieStart,
   deleteMovieSuccess,
   deleteMovieFailure,
+  createMovieStart,
+  createMovieSuccess,
+  createMovieFailure,
 } from "./movieActions";
 import { userRequest } from "../../requestMethods";
 
@@ -16,6 +19,17 @@ export const getMovies = async (dispatch) => {
   } catch (err) {
     console.log(err);
     dispatch(getMoviesFailure);
+  }
+};
+
+export const createMovie = async (movie, dispatch) => {
+  dispatch(createMovieStart());
+  try {
+    const res = await userRequest.post("movies/", movie);
+    dispatch(createMovieSuccess(res.data));
+  } catch (err) {
+    console.log(err);
+    dispatch(createMovieFailure);
   }
 };
 

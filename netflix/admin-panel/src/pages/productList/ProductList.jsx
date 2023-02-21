@@ -1,13 +1,12 @@
 import "./productList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { getMovies, deleteMovie } from "../../context/movieContext/apiCalls";
 
 const ProductList = () => {
-  const navigate = useNavigate();
   const { movies, dispatch } = useContext(MovieContext);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/dashboard/product/" + params.row.id}>
+            <Link to={"/dashboard/movie/" + params.row._id}>
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutlineIcon

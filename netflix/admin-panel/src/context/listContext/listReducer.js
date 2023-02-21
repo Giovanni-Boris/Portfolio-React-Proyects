@@ -54,7 +54,7 @@ const listReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
-    /*case "UPDATE_LIST_START":
+    case "UPDATE_LIST_START":
       return {
         ...state,
         isFetching: true,
@@ -74,7 +74,6 @@ const listReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
-    */
 
     default:
       return state;

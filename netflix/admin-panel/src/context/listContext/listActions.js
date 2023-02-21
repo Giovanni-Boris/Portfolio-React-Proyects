@@ -39,7 +39,7 @@ export const createListSuccess = (list) => ({
 export const createListFailure = () => ({
   type: "CREATE_LIST_FAILURE",
 });
-/*
+
 //UPDATE
 export const updateListStart = () => ({
   type: "UPDATE_LIST_START",
@@ -53,4 +53,3 @@ export const updateListSuccess = (list) => ({
 export const updateListFailure = () => ({
   type: "UPDATE_LIST_FAILURE",
 });
-*/

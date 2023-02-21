@@ -1,56 +1,56 @@
 import "./list.css";
-import { DataGrid } from "@mui/x-data-grid";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { ListContext } from "../../context/listContext/ListContext";
-import { getLists, deleteList } from "../../context/listContext/apiCalls";
+import { useContext } from "react";
+
 const List = () => {
-  const { lists, dispatch } = useContext(ListContext);
-
-  useEffect(() => {
-    getLists(dispatch);
-  }, [dispatch]);
-
-  const handleDelete = (id) => {
-    deleteList(id, dispatch);
-  };
-
-  const columns = [
-    { field: "_id", headerName: "ID", width: 220 },
-    { field: "title", headerName: "Title", width: 250 },
-    { field: "genre", headerName: "Genre", width: 150 },
-    { field: "type", headerName: "Type", width: 150 },
-
-    {
-      field: "action",
-      headerName: "Action",
-      width: 150,
-      renderCell: (params) => {
-        return (
-          <>
-            <Link to={"/dashboard/list/" + params.row._id}>
-              <button className="productListEdit">Edit</button>
-            </Link>
-            <DeleteOutlineIcon
-              className="productListDelete"
-              onClick={() => handleDelete(params.row._id)}
-            />
-          </>
-        );
-      },
-    },
-  ];
+  let { listId } = useParams();
+  const { lists } = useContext(ListContext);
+  const list = lists.find((item) => item._id === listId);
   return (
-    <div className="list">
-      <DataGrid
-        rows={lists}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={8}
-        getRowId={(row) => row._id}
-        checkboxSelection
-      />
+    <div className="product">
+      <div className="productTitleContainer">
+        <h1 className="productTitle">List</h1>
+        <Link to="/dashboard/newList">
+          <button className="productAddButton">Create</button>
+        </Link>
+      </div>
+      <div className="productTop">
+        <div className="productTopRight">
+          <div className="productInfoTop">
+            <span className="productName">{list.title}</span>
+          </div>
+          <div className="productInfoBottom">
+            <div className="productInfoItem">
+              <span className="productInfoKey">id:</span>
+              <span className="productInfoValue">{list._id}</span>
+            </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">genre:</span>
+              <span className="productInfoValue">{list.genre}</span>
+            </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">type:</span>
+              <span className="productInfoValue">{list.type}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="productBottom">
+        <form className="productForm">
+          <div className="productFormLeft">
+            <label>List Title</label>
+            <input type="text" placeholder={list.title} />
+            <label>Type</label>
+            <input type="text" placeholder={list.type} />
+            <label>Genre</label>
+            <input type="text" placeholder={list.genre} />
+          </div>
+          <div className="productFormRight">
+            <button className="productButton">Update</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

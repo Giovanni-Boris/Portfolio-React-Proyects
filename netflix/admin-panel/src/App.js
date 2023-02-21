@@ -6,15 +6,18 @@ import {
 } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/dashboard/Dashboard";
-
+import Login from "./pages/login/Login";
+import { AuthContext } from "./context/authContext/AuthContext";
+import { useContext } from "react";
 function App() {
-  const user = true;
+  const { user } = useContext(AuthContext);
+  console.log("Rendering");
   return (
     <Router>
       <Routes>
         <Route
           path="/login"
-          element={!user ? <Dashboard /> : <Navigate to="/dashboard/" />}
+          element={!user ? <Login /> : <Navigate to="/dashboard/" />}
         />
         <Route
           path="/dashboard/*"

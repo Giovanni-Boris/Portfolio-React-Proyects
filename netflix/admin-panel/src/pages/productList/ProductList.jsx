@@ -2,10 +2,9 @@ import "./productList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { Link } from "react-router-dom";
-import { productRows } from "../../dummyData";
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { MovieContext } from "../../context/movieContext/MovieContext";
-import { getMovies } from "../../context/movieContext/apiCalls";
+import { getMovies, deleteMovie } from "../../context/movieContext/apiCalls";
 
 const ProductList = () => {
   const { movies, dispatch } = useContext(MovieContext);
@@ -14,7 +13,9 @@ const ProductList = () => {
     console.log("productList");
     getMovies(dispatch);
   }, [dispatch]);
-  const handleDelete = (id) => {};
+  const handleDelete = (id) => {
+    deleteMovie(id, dispatch);
+  };
   const columns = [
     { field: "_id", headerName: "ID", width: 220 },
     {
@@ -48,7 +49,7 @@ const ProductList = () => {
             </Link>
             <DeleteOutlineIcon
               className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );

@@ -10,6 +10,7 @@ import Product from "../product/Product";
 import NewProduct from "../newProduct/NewProduct";
 import ListList from "../listList/ListList";
 import List from "../list/List";
+import NewList from "../newList/NewList";
 import { Routes, Route } from "react-router-dom";
 
 const Dashboard = () => {
@@ -29,6 +30,7 @@ const Dashboard = () => {
           <Route path="/newMovie" element={<NewProduct />} />
           <Route path="/lists" element={<ListList />} />
           <Route path="/list/:listId" element={<List />} />
+          <Route path="/newList" element={<NewList />} />
         </Routes>
       </div>
     </>

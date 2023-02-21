@@ -8,8 +8,9 @@ import NewUser from "../newUser/NewUser";
 import ProductList from "../productList/ProductList";
 import Product from "../product/Product";
 import NewProduct from "../newProduct/NewProduct";
-
+import List from "../list/List";
 import { Routes, Route } from "react-router-dom";
+
 const Dashboard = () => {
   return (
     <>
@@ -24,6 +25,10 @@ const Dashboard = () => {
           <Route path="/movies" element={<ProductList />} />
           <Route path="/movie/:movieId" element={<Product />} />
           <Route path="/newMovie" element={<NewProduct />} />
+          <Route path="/newMovie" element={<NewProduct />} />
+          <Route path="/lists" element={<List />} />
+          {/*<Route path="/lists" element={<List />} />
+                    <Route path="/lists" element={<List />} />*/}
         </Routes>
       </div>
     </>

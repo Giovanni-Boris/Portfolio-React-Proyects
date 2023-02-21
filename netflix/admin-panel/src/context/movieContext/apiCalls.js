@@ -1,10 +1,10 @@
-import { getMoviesStart } from "./movieActions";
 import {
-  userRequest,
+  getMoviesStart,
   getMoviesSuccess,
-  getMoviesSuccess,
-} from "../../requestMethods";
-const getMovies = async (dispatch) => {
+  getMoviesFailure,
+} from "./movieActions";
+import { userRequest } from "../../requestMethods";
+export const getMovies = async (dispatch) => {
   dispatch(getMoviesStart());
   try {
     const res = await userRequest.get("movies");

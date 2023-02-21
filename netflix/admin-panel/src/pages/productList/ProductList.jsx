@@ -3,34 +3,39 @@ import { DataGrid } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { Link } from "react-router-dom";
 import { productRows } from "../../dummyData";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { MovieContext } from "../../context/movieContext/MovieContext";
+import { getMovies } from "../../context/movieContext/apiCalls";
+
 const ProductList = () => {
-  const [data, setData] = useState(productRows);
-  console.log(data);
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  const { movies, dispatch } = useContext(MovieContext);
+
+  useEffect(() => {
+    console.log("productList");
+    getMovies(dispatch);
+  }, [dispatch]);
+  const handleDelete = (id) => {};
   const columns = [
-    { field: "id", headerName: "ID", width: 220 },
+    { field: "_id", headerName: "ID", width: 220 },
     {
-      field: "product",
-      headerName: "Product",
+      field: "movie",
+      headerName: "Movie",
       width: 220,
       renderCell: (params) => {
         return (
           <div className="productListItem">
             <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.name}
+            {params.row.title}
           </div>
         );
       },
     },
-    { field: "stock", headerName: "Stock", width: 200 },
-    {
-      field: "price",
-      headerName: "Price",
-      width: 160,
-    },
+    { field: "genere", headerName: "Genre", width: 120 },
+
+    { field: "year", headerName: "Genre", width: 120 },
+    { field: "limit", headerName: "limit", width: 120 },
+    { field: "isSeries", headerName: "isSeries", width: 120 },
+
     {
       field: "action",
       headerName: "Action",
@@ -53,11 +58,12 @@ const ProductList = () => {
   return (
     <div className="productList">
       <DataGrid
-        rows={data}
+        rows={movies}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
         checkboxSelection
+        getRowId={(r) => r._id}
       />
     </div>
   );

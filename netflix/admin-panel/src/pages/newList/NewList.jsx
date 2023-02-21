@@ -3,8 +3,14 @@ import "./newList.css";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { ListContext } from "../../context/listContext/ListContext";
 import { getMovies } from "../../context/movieContext/apiCalls";
+import { createList } from "../../context/listContext/apiCalls";
+import { useNavigate } from "react-router-dom";
 const NewList = () => {
-  const [list, setList] = useState({});
+  const navigate = useNavigate();
+  const [list, setList] = useState(() => {
+    console.log("crating state");
+    return {};
+  });
   const { movies, dispatch: dispatchMovie } = useContext(MovieContext);
   const { dispatch } = useContext(ListContext);
 
@@ -24,9 +30,10 @@ const NewList = () => {
     let value = Array.from(e.target.selectedOptions, (option) => option.value);
     setList({ ...list, [e.target.name]: value });
   };
-  console.log(list);
   const handleSubmit = (e) => {
     e.preventDefault();
+    createList(list, dispatch);
+    navigate("/dashboard/lists");
   };
   return (
     <div className="newProduct">
@@ -54,7 +61,7 @@ const NewList = () => {
           <div className="addProductItem">
             <label>Type</label>
             <select name="type" onChange={handleChange}>
-              <option disabled>Type</option>
+              <option>Type</option>
               <option value="movie">Movie</option>
               <option value="series">Series</option>
             </select>

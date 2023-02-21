@@ -11,9 +11,10 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
   const newList = new List(req.body);
 
   try {
-    const savedList = await newList.saved();
+    const savedList = await newList.save();
     res.status(200).json(savedList);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

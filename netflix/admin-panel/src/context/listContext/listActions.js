@@ -26,7 +26,7 @@ export const deleteListFailure = () => ({
 });
 
 //CREATE
-/*
+
 export const createListStart = () => ({
   type: "CREATE_LIST_START",
 });
@@ -39,7 +39,7 @@ export const createListSuccess = (list) => ({
 export const createListFailure = () => ({
   type: "CREATE_LIST_FAILURE",
 });
-
+/*
 //UPDATE
 export const updateListStart = () => ({
   type: "UPDATE_LIST_START",

@@ -36,25 +36,25 @@ const listReducer = (state, action) => {
         isFetching: false,
         error: true,
       };
-    /*case "CREATE_MOVIE_START":
+    case "CREATE_LIST_START":
       return {
         ...state,
         isFetching: true,
         error: false,
       };
-    case "CREATE_MOVIE_SUCCESS":
+    case "CREATE_LIST_SUCCESS":
       return {
         lists: [...state.lists, action.payload],
         isFetching: false,
         error: false,
       };
-    case "CREATE_MOVIE_FAILURE":
+    case "CREATE_LIST_FAILURE":
       return {
         ...state,
         isFetching: false,
         error: true,
       };
-    case "UPDATE_LIST_START":
+    /*case "UPDATE_LIST_START":
       return {
         ...state,
         isFetching: true,

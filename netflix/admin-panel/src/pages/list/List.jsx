@@ -4,14 +4,18 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { ListContext } from "../../context/listContext/ListContext";
-import { getLists } from "../../context/listContext/apiCalls";
+import { getLists, deleteList } from "../../context/listContext/apiCalls";
 const List = () => {
   const { lists, dispatch } = useContext(ListContext);
 
   useEffect(() => {
     getLists(dispatch);
   }, [dispatch]);
-  const handleDelete = (id) => {};
+
+  const handleDelete = (id) => {
+    deleteList(id, dispatch);
+  };
+
   const columns = [
     { field: "_id", headerName: "ID", width: 220 },
     { field: "title", headerName: "Title", width: 250 },
@@ -25,7 +29,7 @@ const List = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/dashboard/movie/" + params.row._id}>
+            <Link to={"/dashboard/list/" + params.row._id}>
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutlineIcon
@@ -38,7 +42,7 @@ const List = () => {
     },
   ];
   return (
-    <div className="List">
+    <div className="list">
       <DataGrid
         rows={lists}
         disableSelectionOnClick

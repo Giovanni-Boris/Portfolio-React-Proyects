@@ -1,5 +1,11 @@
-import axios from "axios";
-import { getListsStart, getListsSuccess, getListsFailure } from "./listActions";
+import {
+  getListsStart,
+  getListsSuccess,
+  getListsFailure,
+  deleteListStart,
+  deleteListSuccess,
+  deleteListFailure,
+} from "./listActions";
 import { userRequest } from "../../requestMethods";
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
@@ -9,5 +15,16 @@ export const getLists = async (dispatch) => {
     dispatch(getListsSuccess(res.data));
   } catch (err) {
     dispatch(getListsFailure());
+  }
+};
+
+export const deleteList = async (id, dispatch) => {
+  dispatch(deleteListStart());
+
+  try {
+    await userRequest.get("/lists");
+    dispatch(deleteListSuccess(id));
+  } catch (err) {
+    dispatch(deleteListFailure());
   }
 };

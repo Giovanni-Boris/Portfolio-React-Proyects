@@ -1,12 +1,13 @@
 import "./productList.css";
 import { DataGrid } from "@mui/x-data-grid";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { getMovies, deleteMovie } from "../../context/movieContext/apiCalls";
 
 const ProductList = () => {
+  const navigate = useNavigate();
   const { movies, dispatch } = useContext(MovieContext);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const ProductList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/product/" + params.row.id}>
+            <Link to={"/dashboard/product/" + params.row.id}>
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutlineIcon
@@ -63,8 +64,8 @@ const ProductList = () => {
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
+        getRowId={(row) => row._id}
         checkboxSelection
-        getRowId={(r) => r._id}
       />
     </div>
   );

@@ -2,7 +2,7 @@ import movieReducer from "./movieReducer";
 import { createContext, useReducer, useEffect } from "react";
 
 const initialState = {
-  movie: [],
+  movies: [],
   isFetching: false,
   error: false,
 };

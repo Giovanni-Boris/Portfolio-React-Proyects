@@ -9,6 +9,7 @@ const app = express();
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
+const categoryRoute = require("./routes/categories");
 //config
 dotenv.config();
 mongoose.set("strictQuery", false);
@@ -38,6 +39,7 @@ app.use(morgan("common"));
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/categories", categoryRoute);
 
 app.listen(5000, () => {
   console.log("Backend running in PORT 5000");

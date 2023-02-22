@@ -5,7 +5,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const multer = require("multer");
 const app = express();
-
+const path = require("path");
 //routes
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");

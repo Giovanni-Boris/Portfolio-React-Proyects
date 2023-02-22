@@ -1,6 +1,7 @@
 import "./login.scss";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+import { login } from "../../authContext/apiCalls";
+import { AuthContext } from "../../authContext/AuthContext";
 const initialState = {
   password: "",
   username: "",
@@ -8,7 +9,7 @@ const initialState = {
 
 const Login = () => {
   const [form, setForm] = useState(initialState);
-
+  const { dispatch } = useContext(AuthContext);
   const handleChange = (e) => {
     let { name, value } = e.target;
     setForm({
@@ -17,8 +18,10 @@ const Login = () => {
     });
   };
 
-  const handleLogin = () => {};
-  const handleFinish = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    login(form, dispatch);
+  };
   return (
     <div className="login">
       <div className="top">
@@ -45,7 +48,7 @@ const Login = () => {
             placeholder="Password"
             onChange={handleChange}
           />
-          <button className="loginButton" onClick={handleLogin}>
+          <button className="loginButton" type="submit" onClick={handleSubmit}>
             Sign In
           </button>
           <span>

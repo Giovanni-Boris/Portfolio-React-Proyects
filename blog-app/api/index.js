@@ -5,6 +5,9 @@ const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
 
+//routes
+const authRoute = require("./routes/auth");
+
 //config
 dotenv.config();
 mongoose.set("strictQuery", false);
@@ -28,6 +31,10 @@ app.use(cors({ corsOption }));
 app.use(express.json());
 //to draw in my console the request and the response eithter it wsa successfull or error
 app.use(morgan("common"));
+
+//midleware
+
+app.use("/api/auth", authRoute);
 
 app.listen(5000, () => {
   console.log("Backend running in PORT 5000");

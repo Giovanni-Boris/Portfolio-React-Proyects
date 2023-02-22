@@ -38,7 +38,7 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 //DELETE
-router.put("/:id", verifyToken, async (req, res) => {
+router.delete("/:id", verifyToken, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (post.username === req.body.username) {
@@ -56,6 +56,13 @@ router.put("/:id", verifyToken, async (req, res) => {
   }
 });
 //GET POST
-router.post();
+router.get("/:id", verifyToken, async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    res.status(200).json(post);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

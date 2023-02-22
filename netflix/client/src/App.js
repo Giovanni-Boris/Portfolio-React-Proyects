@@ -17,7 +17,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route
-            path="/login"
+            path="/"
             element={user ? <Navigate to="/dashboard" /> : <Login />}
           />
           <Route

@@ -65,4 +65,27 @@ router.get("/:id", verifyToken, async (req, res) => {
   }
 });
 
+//GET ALL POSTS
+router.get("/", verifyToken, async (req, res) => {
+  const username = req.query.category.user;
+  const catName = req.query.category.cat;
+  try {
+    let posts;
+    if (username) {
+      posts = await Post.find({ username });
+    } else if (catName) {
+      posts = await Post.find({
+        categories: {
+          $in: [catName],
+        },
+      });
+    } else {
+      posts = await Post.find();
+    }
+
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

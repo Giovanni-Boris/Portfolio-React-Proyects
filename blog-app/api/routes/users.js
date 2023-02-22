@@ -38,3 +38,14 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(404).json("User not found");
   }
 });
+
+//GET
+router.get("/:id", verifyTokenAndAuthorization, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const { password, ...others } = user._doc;
+    res.status(200).json(others);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});

@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const morgan = require("morgan");
+const multer = require("multer");
 const app = express();
 
 //routes
@@ -33,6 +34,23 @@ app.use(cors({ corsOption }));
 app.use(express.json());
 //to draw in my console the request and the response eithter it wsa successfull or error
 app.use(morgan("common"));
+//public routes
+app.use("/images", express.static(path.join(__dirname, "/images")));
+
+//IMG  cb error
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
+});
+
+const upload = multer({ storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  res.status(200).json("File has been uploaded");
+});
 
 //midleware
 

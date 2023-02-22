@@ -1,6 +1,7 @@
 import "./register.scss";
 import { useState, useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { publicRequest } from "../../requestMethods";
 const initialState = {
   password: "",
   username: "",
@@ -9,6 +10,7 @@ const initialState = {
 const Register = () => {
   const [email, setEmail] = useState("");
   const [form, setForm] = useState(initialState);
+  const navigate = useNavigate();
 
   const emailRef = useRef();
   const handleChange = (e) => {
@@ -21,8 +23,16 @@ const Register = () => {
   const handleStart = () => {
     setEmail(emailRef.current.value);
   };
-
-  const handleFinish = () => {};
+  const handleFinish = async (e) => {
+    e.preventDefault();
+    console.log(email, form);
+    try {
+      await publicRequest.post("auth/register", { email, ...form });
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="register">
       <div className="top">
@@ -63,7 +73,11 @@ const Register = () => {
               placeholder="password"
               onChange={handleChange}
             />
-            <button className="registerButton" onChange={handleFinish}>
+            <button
+              type="submit"
+              className="registerButton"
+              onClick={handleFinish}
+            >
               Start
             </button>
           </form>

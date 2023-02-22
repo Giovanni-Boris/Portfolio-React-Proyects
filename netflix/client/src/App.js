@@ -3,6 +3,8 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
+import { useContext } from "react";
+import { AuthContext } from "./authContext/AuthContext";
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,7 +13,7 @@ import {
 } from "react-router-dom";
 
 function App() {
-  const user = true;
+  const { user } = useContext(AuthContext);
   return (
     <Router>
       <div className="App">

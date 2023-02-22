@@ -3,7 +3,7 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 const { verifyTokenAndAuthorization } = require("./verifyToken");
-//REGISTER
+//UPDATE
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     if (req.body.password) {
@@ -49,3 +49,5 @@ router.get("/:id", verifyTokenAndAuthorization, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+module.exports = router;

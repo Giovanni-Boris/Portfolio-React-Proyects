@@ -7,6 +7,7 @@ const app = express();
 
 //routes
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/users");
 
 //config
 dotenv.config();
@@ -35,6 +36,7 @@ app.use(morgan("common"));
 //midleware
 
 app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 
 app.listen(5000, () => {
   console.log("Backend running in PORT 5000");

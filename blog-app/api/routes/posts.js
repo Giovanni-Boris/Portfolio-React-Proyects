@@ -67,8 +67,8 @@ router.get("/:id", verifyToken, async (req, res) => {
 
 //GET ALL POSTS
 router.get("/", verifyToken, async (req, res) => {
-  const username = req.query.category.user;
-  const catName = req.query.category.cat;
+  const username = req.query.username;
+  const catName = req.query.cat;
   try {
     let posts;
     if (username) {

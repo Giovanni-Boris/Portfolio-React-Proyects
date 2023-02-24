@@ -10,8 +10,7 @@ import {
   Navigate,
 } from "react-router-dom";
 function App() {
-  const user =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmY2MTBhMDIzMzZlYjhhYTI2ZTVmOCIsImlhdCI6MTY3NzE2ODc4NSwiZXhwIjoxNjc3NjAwNzg1fQ.D16KbAMXPzQgz-m6Rl2nqcmpKTmma8_cVAXwt9EhP6E";
+  const user = false;
   return (
     <Router>
       <Topbar />

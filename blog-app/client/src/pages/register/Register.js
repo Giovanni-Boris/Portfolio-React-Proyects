@@ -26,7 +26,7 @@ const Register = () => {
     try {
       console.log(form);
       const res = await userRequest.post("auth/register", form);
-      res.data && navigate("/");
+      res.data && navigate("/login");
     } catch (err) {
       console.log(err);
       setError(true);
@@ -65,7 +65,7 @@ const Register = () => {
         </button>
       </form>
       <button className="registerLoginButton">
-        <Link to="/" className="link">
+        <Link to="/login" className="link">
           Login
         </Link>
       </button>

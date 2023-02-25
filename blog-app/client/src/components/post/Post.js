@@ -1,16 +1,17 @@
 import "./post.css";
 import { Link } from "react-router-dom";
+import { PF } from "../../requestMethods";
 const Post = ({ post }) => {
   return (
     <div className="post">
-      {post.photo && <img className="postImg" src={post.photo} alt="" />}
+      {post.photo && <img className="postImg" src={PF + post.photo} alt="" />}
       <div className="postInfo">
         <div className="postCats">
           {post.categories.map((c) => (
             <span className="postCat">{c.name}</span>
           ))}
         </div>
-        <Link to={`/main/post/${post._id}`} className="link">
+        <Link to={`/post/${post._id}`} className="link">
           <span className="postTitle">{post.title}</span>
         </Link>
         <hr />

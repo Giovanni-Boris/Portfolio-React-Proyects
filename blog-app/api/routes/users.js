@@ -10,7 +10,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
       const salt = await bcrypt.genSalt(10);
       req.body.password = await bcrypt.hash(req.body.password, salt);
     }
-    const updatedUser = User.findByIdAndUpdate(
+    const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
@@ -19,6 +19,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
     );
     res.status(200).json(updatedUser);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

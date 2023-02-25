@@ -3,6 +3,8 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
+import { AuthContext } from "./context/AuthContext";
+import { useContext } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,7 +12,7 @@ import {
   Navigate,
 } from "react-router-dom";
 function App() {
-  const user = false;
+  const { user } = useContext(AuthContext);
   return (
     <Router>
       <Topbar />

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 import { logout } from "../../context/authActions";
+import { PF } from "../../requestMethods";
 const Topbar = () => {
   const { user, dispatch } = useContext(AuthContext);
-
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -38,12 +38,10 @@ const Topbar = () => {
         </ul>
       </div>
       <div className="topRight">
-        {user?.profilePict ? (
-          <img
-            className="topImg"
-            src="https://i.dailymail.co.uk/1s/2019/01/07/10/8218450-6564651-image-m-33_1546856935221.jpg"
-            alt=""
-          />
+        {user ? (
+          <Link to="/main/settings" className="link">
+            <img className="topImg" src={PF + user.profilePic} alt="" />
+          </Link>
         ) : (
           <ul className="topList">
             <li className="topListItem">

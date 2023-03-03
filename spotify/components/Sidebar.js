@@ -35,6 +35,13 @@ const Sidebar = () => {
           <RssIcon className="h-5 w-5" />
           <p>Your episodes</p>
         </button>
+        <hr className="border-t-[0.1px] border-gray-900" />
+        {/* Playlists */}
+        <p className="cursor-pointer hover:text-white">PlayList name...</p>
+        <p className="cursor-pointer hover:text-white">PlayList name...</p>
+        <p className="cursor-pointer hover:text-white">PlayList name...</p>
+        <p className="cursor-pointer hover:text-white">PlayList name...</p>
+        <p className="cursor-pointer hover:text-white">PlayList name...</p>
       </div>
     </div>
   );

@@ -36,20 +36,29 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+
   secret: process.env.JWT_SECRET,
+
   pages: {
     signIn: "/login",
   },
+
   callbacks: {
     async jwt({ token, account, user }) {
       //initial sign iN
+      console.log("----------token-------------");
+      console.log(token);
+      console.log("----------ACCOUT -------------");
+      console.log(account.expires_at);
+      console.log("----------USER-------------");
+      console.log(user);
       if (account && user) {
         return {
           ...token,
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
           username: account.providerAccountId,
-          accessTokenExpires: refreshToken.expires_at * 1000,
+          accessTokenExpires: Date.now() + account.expires_at * 1000,
         };
       }
 

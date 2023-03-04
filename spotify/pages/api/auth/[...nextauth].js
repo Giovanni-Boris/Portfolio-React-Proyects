@@ -46,12 +46,13 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, account, user }) {
       //initial sign iN
-      console.log("----------token-------------");
+      /*console.log("----------token-------------");
       console.log(token);
       console.log("----------ACCOUT -------------");
       console.log(account);
       console.log("----------USER-------------");
-      console.log(user);
+      console.log(user);*/
+      console.log("Aqui");
       if (account && user) {
         return {
           ...token,
@@ -63,12 +64,15 @@ export const authOptions = {
       }
 
       // Return previous token if the access token has not expired yet
+      console.log("------------token--------------");
       if (Date.now() < token.accessTokenExpires) {
+        console.log("EXISTING TOKEN IS VALID");
         return token;
       }
 
       //TOKEN EXPIRED
       // Access token has expired, try to update it
+      console.log("ACCESS TOKEN HAS EXPIRED REFRESHING");
       return await refreshAccessToken(token);
     },
 

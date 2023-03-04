@@ -64,7 +64,6 @@ export const authOptions = {
       }
 
       // Return previous token if the access token has not expired yet
-      console.log("------------token--------------");
       if (Date.now() < token.accessTokenExpires) {
         console.log("EXISTING TOKEN IS VALID");
         return token;

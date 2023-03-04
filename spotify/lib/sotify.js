@@ -16,7 +16,20 @@ const scopes = [
   "user-follow-read",
 ].join(",");
 
-NEXTAUTH_URL=http://locahost:3000
-NEXT_PUBLIC_CLIENT_SECRET=b11cb13b42094ce3b7efcbe644291b5e
-NEXT_PUBLIC_CLIENT_ID=c985a903478c42639910b32701988ec7
-JWT_SECRET=some_super_secret_value
+const params = {
+  scope: scopes,
+};
+
+const queryParamsString = new URLSearchParams(params);
+
+const LOGIN_URL =
+  "https://accounts.spotify.com/authorize?" + queryParamsString.toString();
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
+  clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
+});
+
+export default spotifyApi;
+
+export { LOGIN_URL };

@@ -49,7 +49,7 @@ export const authOptions = {
       console.log("----------token-------------");
       console.log(token);
       console.log("----------ACCOUT -------------");
-      console.log(account.expires_at);
+      console.log(account);
       console.log("----------USER-------------");
       console.log(user);
       if (account && user) {
@@ -74,7 +74,7 @@ export const authOptions = {
 
     async session({ session, token }) {
       session.user.accessToken = token.accessToken;
-      session.user.refreshToken = toke.refreshToken;
+      session.user.refreshToken = token.refreshToken;
       session.user.username = token.username;
       return session;
     },

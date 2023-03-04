@@ -26,8 +26,6 @@ export default Login;
 
 export async function getServerSideProps() {
   const providers = await getProviders();
-  console.log(process.env.NEXTAUTH_URL);
-  console.log(providers);
   return {
     props: {
       providers,

@@ -22,7 +22,6 @@ const Sidebar = () => {
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
       spotifyApi.getUserPlaylists({ offset: 0, limit: 20 }).then((data) => {
-        console.log(data);
         setPlayLists(data.body.items);
       });
     }

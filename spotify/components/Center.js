@@ -3,6 +3,9 @@ import { useSession } from "next-auth/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { useState, useEffect } from "react";
 import { shuffle } from "lodash";
+import { useRecoilValue, useRecoilState } from "recoil";
+import { playlistIdState, playlistState } from "../atoms/playListAtom";
+import useSpotify from "../hooks/useSpotify";
 
 const colors = [
   "from-indigo-500",
@@ -16,12 +19,26 @@ const colors = [
 
 const Center = () => {
   const { data: session } = useSession();
+  const spotifyApi = useSpotify();
   const [color, setColor] = useState(null);
+  const playlistId = useRecoilValue(playlistIdState);
+  const [playlist, setPlaylist] = useRecoilState(playlistState);
 
   useEffect(() => {
     setColor(shuffle(colors).pop());
-  }, []);
+  }, [playlistId]);
 
+  useEffect(() => {
+    console.log(playlistId);
+    spotifyApi
+      .getPlaylist(playlistId)
+      .then((data) => {
+        console.log(data);
+        setPlayList(data.body);
+      })
+      .catch((err) => console.log("Something went wrong!", err));
+  }, [spotifyApi, playlistId]);
+  console.log(playlist);
   return (
     <div className="flex-grow ">
       <header className="absolute top-5 right-8">

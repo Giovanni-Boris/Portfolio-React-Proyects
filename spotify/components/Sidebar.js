@@ -9,14 +9,17 @@ import {
 import { signOut, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import useSpotify from "../hooks/useSpotify";
+import { useRecoilState } from "recoil";
+import { playlistIdState } from "../atoms/playListAtom";
 
 const Sidebar = () => {
   const spotifyApi = useSpotify();
   const { data: session, status } = useSession();
   const [playLists, setPlayLists] = useState([]);
+  const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
+  console.log("pLaylist,", playlistId);
   useEffect(() => {
-    console.log("UseEffect", spotifyApi.getAccessToken());
     if (spotifyApi.getAccessToken()) {
       spotifyApi.getUserPlaylists({ offset: 0, limit: 20 }).then((data) => {
         console.log(data);
@@ -62,7 +65,11 @@ const Sidebar = () => {
         <hr className="border-t-[0.1px] border-gray-900" />
         {/* Playlists */}
         {playLists.map((playlist) => (
-          <p key={playlist.id} className="cursor-pointer hover:text-white">
+          <p
+            key={playlist.id}
+            className="cursor-pointer hover:text-white"
+            onClick={() => setPlaylistId(playlist.id)}
+          >
             {playlist.name}
           </p>
         ))}

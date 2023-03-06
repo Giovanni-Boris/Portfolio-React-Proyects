@@ -13,15 +13,15 @@ async function refreshAccessToken(token) {
     return {
       ...token,
       accessToken: refreshedToken.accessToken,
-      accessTokenExpires: Date.now() + refreshedTokens.expires_in * 1000,
-      refreshToken: account.refresh_token ?? token.refreshToken,
+      accessTokenExpires: Date.now() + refreshedToken.expires_in * 1000,
+      refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
     };
   } catch (error) {
     console.log(error);
 
     return {
       ...token,
-      error: " RefressAccessToken Erro",
+      error: "RefressAccessToken Error",
     };
   }
 }
@@ -59,7 +59,7 @@ export const authOptions = {
           accessToken: account.access_token,
           refreshToken: account.refresh_token,
           username: account.providerAccountId,
-          accessTokenExpires: Date.now() + account.expires_at * 1000,
+          accessTokenExpires: account.expires_at * 1000,
         };
       }
 
@@ -76,6 +76,9 @@ export const authOptions = {
     },
 
     async session({ session, token }) {
+      //console.log("session", session);
+      //console.log("token", token);
+
       session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
       session.user.username = token.username;

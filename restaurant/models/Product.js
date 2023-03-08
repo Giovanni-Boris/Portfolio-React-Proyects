@@ -35,8 +35,3 @@ const ProductSchema = new mongoose.Schema(
 export default mongoose.models.Product ||
   mongoose.model("Product", ProductSchema);
   
-MONGO_URL = mongodb+srv://restaurant-lama:vPeaqmgXRsKj3flj@cluster0.gyngb.mongodb.net/pizza?retryWrites=true&w=majority
-
-ADMIN_USERNAME  = admin
-ADMIN_PASSWORD = 123456
-TOKEN = Swddfdsfsd||dsd232|sddsdjjj;afa

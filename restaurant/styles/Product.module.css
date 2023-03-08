@@ -1,5 +1,5 @@
 .container {
-  height: calc(100vh - 100px) !important;
+  height: calc(100vh - 100px);
   display: flex;
 }
 
@@ -86,4 +86,51 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    height: auto;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .imgContainer {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .title {
+    margin: 5px;
+  }
+
+  .sizes {
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  .ingredients {
+    flex-direction: column;
+  }
+
+  .option {
+    margin: 10px;
+    font-size: 18px;
+  }
+
+  .checkbox {
+    width: 25px;
+    height: 25px;
+  }
+
+  .quantity {
+    height: 50px;
+    padding: 5px;
+  }
+  .button {
+    height: 50px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+  }
 }

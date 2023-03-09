@@ -66,7 +66,7 @@ const Cart = () => {
                   {
                     amount: {
                       currency_code: currency,
-                      value: 12,
+                      value: amount,
                     },
                   },
                 ],

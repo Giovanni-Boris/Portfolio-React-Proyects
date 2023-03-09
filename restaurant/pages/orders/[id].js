@@ -1,7 +1,8 @@
 import styles from "../../styles/Order.module.css";
 import Image from "next/image";
-const Order = () => {
-  const status = 0;
+const Order = ({ order }) => {
+  console.log(order);
+  const status = order.status;
 
   const statusClass = (index) => {
     if (index - status < 1) return styles.done;
@@ -25,18 +26,18 @@ const Order = () => {
             <tbody>
               <tr className={styles.tr}>
                 <td>
-                  <div className={styles.id}>132131313131313</div>
+                  <div className={styles.id}>{order._id}</div>
                 </td>
                 <td>
-                  <span className={styles.name}>Jhon DOes</span>
+                  <span className={styles.name}>{order.customer}</span>
                 </td>
                 <td>
                   <span className={styles.address}>
-                    <span> Virgini 12th Sth</span>
+                    <span>{order.address}</span>
                   </span>
                 </td>
                 <td>
-                  <span className={styles.total}>$79.80</span>
+                  <span className={styles.total}>${order.total}</span>
                 </td>
               </tr>
             </tbody>
@@ -122,3 +123,12 @@ const Order = () => {
 };
 
 export default Order;
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await fetch(`http://localhost:3000/api/orders/${params.id}`);
+  const order = await res.json();
+  console.log(order);
+  return {
+    props: { order },
+  };
+};

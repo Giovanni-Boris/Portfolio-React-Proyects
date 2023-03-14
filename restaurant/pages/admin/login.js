@@ -21,7 +21,10 @@ const Login = () => {
 
   const handleClick = async () => {
     try {
-      await axios.post("http://localhost:3000/api/login", form);
+      await axios.post(
+        "https://portfolio-react-proyects-q3fyox4m1-giovanni-boris.vercel.app/api/login",
+        form
+      );
       router.push("/admin");
     } catch (err) {
       console.log(err);

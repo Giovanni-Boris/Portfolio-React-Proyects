@@ -1,11 +1,18 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/api/";
+//const BASE_URL = "http://localhost:5000/api/";
 
-export const PF = "http://localhost:5000/images/";
+//export const PF = "http://localhost:5000/images/";
 
-const TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMmY2MTBhMDIzMzZlYjhhYTI2ZTVmOCIsImlhdCI6MTY3NzE2ODc4NSwiZXhwIjoxNjc3NjAwNzg1fQ.D16KbAMXPzQgz-m6Rl2nqcmpKTmma8_cVAXwt9EhP6E";
+const BASE_URL = "https://blog-app-8394.onrender.com:10000/api/";
+
+export const PF = "https://blog-app-8394.onrender.com:10000/images/";
+
+let TOKEN =
+  localStorage.getItem("persist:root") &&
+  JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser
+    ?.accessToken;
+
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
 });

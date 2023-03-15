@@ -4,9 +4,9 @@ import axios from "axios";
 
 //export const PF = "http://localhost:5000/images/";
 
-const BASE_URL = "https://blog-app-8394.onrender.com:10000/api/";
+const BASE_URL = "https://blog-app-8394.onrender.com/api/";
 
-export const PF = "https://blog-app-8394.onrender.com:10000/images/";
+export const PF = "https://blog-app-8394.onrender.com/images/";
 
 let TOKEN =
   localStorage.getItem("persist:root") &&

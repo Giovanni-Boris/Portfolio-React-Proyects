@@ -2,7 +2,7 @@ import styles from "../styles/Cart.module.css";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { publicRequest } from "../lib/requestMethod";
 import { useRouter } from "next/router";
 import { reset } from "../redux/cartSlice";
 import OrderDetail from "../components/OrderDetail";
@@ -25,7 +25,7 @@ const Cart = () => {
 
   const createOrder = async (data) => {
     try {
-      const res = await axios.post("http://localhost:3000/api/orders", data);
+      const res = await publicRequest.post("orders", data);
       console.log(res);
       if (res.status === 201) {
         dispatch(reset());

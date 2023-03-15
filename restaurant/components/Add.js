@@ -1,5 +1,6 @@
 import styles from "../styles/Add.module.css";
 import { useState } from "react";
+import { publicRequest } from "../lib/requestMethod";
 import axios from "axios";
 import { useRouter } from "next/router";
 
@@ -47,7 +48,7 @@ const Add = ({ setClose }) => {
         img: url,
       };
 
-      await axios.post("http://localhost:3000/api/products", newProduct);
+      await publicRequest.post("products", newProduct);
       setClose(true);
     } catch (err) {
       console.log(err);

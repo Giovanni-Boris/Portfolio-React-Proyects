@@ -5,6 +5,7 @@ import PizzaList from "../components/PizzaList";
 import { useState } from "react";
 import Add from "../components/Add";
 import AddButton from "../components/AddButton";
+import { publicRequest } from "../lib/requestMethod";
 
 export default function Home({ pizzaList, admin }) {
   const [close, setClose] = useState(true);
@@ -33,9 +34,8 @@ export const getServerSideProps = async (ctx) => {
     admin = true;
   }
 
-  const res = await fetch("http://localhost:3000/api/products");
-  const pizzaList = await res.json();
+  const res = await publicRequest.get("products");
   return {
-    props: { pizzaList, admin },
+    props: { pizzaList: res.data, admin },
   };
 };

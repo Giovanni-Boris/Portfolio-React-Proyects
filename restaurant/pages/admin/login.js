@@ -1,7 +1,7 @@
 import styles from "../../styles/Login.module.css";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import axios from "axios";
+import { publicRequest } from "../../lib/requestMethod";
 const initialForm = {
   username: "",
   password: "",
@@ -21,10 +21,7 @@ const Login = () => {
 
   const handleClick = async () => {
     try {
-      await axios.post(
-        "https://portfolio-react-proyects.vercel.app/api/login",
-        form
-      );
+      await publicRequest.post("login", form);
       router.push("/admin");
     } catch (err) {
       console.log(err);

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/cartSlice";
+import { publicRequest } from "../../lib/requestMethod";
 
 const Product = ({ pizza }) => {
   const [price, setPrice] = useState(pizza.prices[0]);
@@ -98,9 +99,8 @@ const Product = ({ pizza }) => {
 export default Product;
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:3000/api/products/${params.id}`);
-  const pizza = await res.json();
+  const res = await publicRequest.get(`products/${params.id}`);
   return {
-    props: { pizza },
+    props: { pizza: res.data },
   };
 };

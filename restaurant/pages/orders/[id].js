@@ -1,7 +1,7 @@
 import styles from "../../styles/Order.module.css";
 import Image from "next/image";
+import { publicRequest } from "../../lib/requestMethod";
 const Order = ({ order }) => {
-  console.log(order);
   const status = order.status;
 
   const statusClass = (index) => {
@@ -110,9 +110,6 @@ const Order = ({ order }) => {
           <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Total:</b>$20
           </div>
-          <div className={styles.paymentMethods}>
-            <button className={styles.payButton}>CASH ON DELIVERY</button>
-          </div>
           <button disabled className={styles.button}>
             PAID
           </button>
@@ -125,10 +122,8 @@ const Order = ({ order }) => {
 export default Order;
 
 export const getServerSideProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:3000/api/orders/${params.id}`);
-  const order = await res.json();
-  console.log(order);
+  const res = await publicRequest.get(`orders/${params.id}`);
   return {
-    props: { order },
+    props: { order: res.data },
   };
 };

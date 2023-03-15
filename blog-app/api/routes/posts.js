@@ -57,7 +57,7 @@ router.delete("/:id", verifyToken, async (req, res) => {
   }
 });
 //GET POST
-router.get("/:id", verifyToken, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     res.status(200).json(post);
@@ -67,7 +67,7 @@ router.get("/:id", verifyToken, async (req, res) => {
 });
 
 //GET ALL POSTS
-router.get("/", verifyToken, async (req, res) => {
+router.get("/", async (req, res) => {
   const username = req.query.username;
   const catName = req.query.cat;
   try {

@@ -7,7 +7,7 @@ import Cart from "./pages/Cart";
 import Success from "./pages/Success";
 import { useSelector } from "react-redux";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -22,7 +22,10 @@ function App() {
         <Routes>
           <Route path="/products/:category" element={<ProductList />} />
           <Route path="/product/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={user ? <Cart /> : <Navigate to="/login" />}
+          />
           <Route
             path="/register"
             element={user ? <Navigate to="/" /> : <Register />}

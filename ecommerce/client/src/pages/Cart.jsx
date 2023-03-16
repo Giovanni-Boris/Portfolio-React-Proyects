@@ -10,6 +10,8 @@ import StripeCheckout from "react-stripe-checkout";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userRequest } from "../requestMethod";
+import { cleanCart } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div``;
@@ -165,8 +167,8 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onToken = (token) => {
-    console.log(token);
     setStripeToken(token);
   };
   useEffect(() => {
@@ -182,7 +184,11 @@ const Cart = () => {
     };
     stripeToken && makeRequest();
   }, [stripeToken, cart.total, navigate]);
-  console.log(stripeToken);
+
+  const handleClick = () => {
+    //updateCart
+    dispatch(cleanCart());
+  };
   return (
     <Container>
       <Navbar />
@@ -195,7 +201,9 @@ const Cart = () => {
             <TopText>Shopping Bag(2)</TopText>
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <TopButton type="filled" onClick={handleClick}>
+            CLEAN CART
+          </TopButton>
         </Top>
         <Bottom>
           <Info>

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
-import Products from "../components/Products";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 import AddIcon from "@mui/icons-material/Add";
@@ -12,6 +11,7 @@ import { publicRequest } from "../requestMethod";
 import { useState, useEffect } from "react";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -126,8 +126,10 @@ const Product = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(null);
-  const [size, setSize] = useState(null);
+  const [size, setSize] = useState();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.currentUser);
+
   const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
@@ -144,6 +146,8 @@ const Product = () => {
       try {
         const res = await publicRequest.get("/products/find/" + id);
         setProduct(res.data);
+        setColor(res.data.color[0]);
+        setSize(res.data.size[0]);
       } catch (err) {
         console.log(err);
       }
@@ -185,7 +189,7 @@ const Product = () => {
               <Amount>{quantity}</Amount>
               <AddIcon onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button onClick={handleClick}>ADD TO CART</Button>
+            {user && <Button onClick={handleClick}>ADD TO CART</Button>}
           </AddContainer>
         </InfoContainer>
       </Wrapper>

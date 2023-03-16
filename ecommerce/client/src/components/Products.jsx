@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { popularProducts } from "../data";
 import Product from "./Product";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -11,19 +10,14 @@ const Container = styled.div`
 `;
 
 const Products = ({ cat, filters, sort }) => {
-  const [products, setProducts] = useState(() => {
-    console.log("Creating state");
-    return [];
-  });
+  const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   useEffect(() => {
-    console.log("Obteneind info");
     const getProducts = async () => {
       try {
         const res = await axios.get(
           cat ? `/products?category=${cat}` : "/products"
         );
-        console.log(res.data);
         setProducts(res.data);
       } catch (err) {
         console.log(err);

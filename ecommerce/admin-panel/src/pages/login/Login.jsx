@@ -37,14 +37,14 @@ const Login = () => {
         style={{ padding: 10, marginBottom: 20 }}
         name="username"
         type="text"
-        placeholder="username"
+        placeholder="the username is admin"
         onChange={handleChange}
       />
       <input
         style={{ padding: 10, marginBottom: 20 }}
         name="password"
         type="password"
-        placeholder="password"
+        placeholder="the password is 123456"
         onChange={handleChange}
       />
       <button

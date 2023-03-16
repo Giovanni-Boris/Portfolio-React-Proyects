@@ -1,13 +1,11 @@
 import "./product.css";
 import { Link, useParams } from "react-router-dom";
 import Chart from "../../components/chart/Chart";
-import { productData } from "../../dummyData";
 import PublishIcon from "@mui/icons-material/Publish";
 import { useSelector } from "react-redux";
 const Product = () => {
   const { productId } = useParams();
   const product = useSelector((state) => {
-    console.log("Creating our state");
     return state.product.products.find((product) => product._id === productId);
   });
   return (

@@ -9,7 +9,7 @@ import Single from "./pages/single/Single";
 import { AuthContext } from "./context/AuthContext";
 import { useContext } from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,

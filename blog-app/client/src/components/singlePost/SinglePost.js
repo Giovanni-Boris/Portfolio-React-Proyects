@@ -99,7 +99,7 @@ const SinglePost = () => {
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
             Autor:
-            <Link to={`/main/?username=${post.username}`} className="link">
+            <Link to={`/?username=${post.username}`} className="link">
               <b>{post.username}</b>
             </Link>
           </span>

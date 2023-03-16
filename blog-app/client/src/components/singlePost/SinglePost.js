@@ -2,7 +2,7 @@ import "./singlePost.css";
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { userRequest, PF } from "../../requestMethods";
+import { userRequest, publicRequest, PF } from "../../requestMethods";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const SinglePost = () => {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const res = await userRequest.get("posts/" + postId);
+        const res = await publicRequest.get("posts/" + postId);
         setPost(res.data);
         setFormUpdate({
           title: res.data.title,

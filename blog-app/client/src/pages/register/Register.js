@@ -1,7 +1,7 @@
 import "./register.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { userRequest } from "../../requestMethods";
+import { publicRequest } from "../../requestMethods";
 
 const initialState = {
   email: "",
@@ -25,7 +25,7 @@ const Register = () => {
 
     try {
       console.log(form);
-      const res = await userRequest.post("auth/register", form);
+      const res = await publicRequest.post("auth/register", form);
       res.data && navigate("/login");
     } catch (err) {
       console.log(err);

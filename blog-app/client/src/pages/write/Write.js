@@ -43,7 +43,7 @@ const Write = () => {
     }
     try {
       const res = await userRequest.post("posts", newPost);
-      navigate("/main/post/" + res.data._id);
+      navigate("/post/" + res.data._id);
     } catch (err) {}
   };
 

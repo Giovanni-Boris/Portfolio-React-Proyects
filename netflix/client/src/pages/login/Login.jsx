@@ -39,13 +39,13 @@ const Login = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email or phone number"
+            placeholder="Use this email admin@gmail.com"
             onChange={handleChange}
           />
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="Use this password 123456"
             onChange={handleChange}
           />
           <button className="loginButton" type="submit" onClick={handleSubmit}>

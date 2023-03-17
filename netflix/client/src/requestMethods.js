@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8800/api/";
-
+//const BASE_URL = "http://localhost:8800/api/";
+const BASE_URL = "https://netflix-clone-9xzi.onrender.com/api/";
 const TOKEN =
   localStorage.getItem("user") &&
   JSON.parse(localStorage.getItem("user"))?.accessToken;

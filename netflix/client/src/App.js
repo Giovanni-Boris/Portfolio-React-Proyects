@@ -6,7 +6,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import { useContext } from "react";
 import { AuthContext } from "./authContext/AuthContext";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,

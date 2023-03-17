@@ -2,6 +2,7 @@ import "./register.scss";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { publicRequest } from "../../requestMethods";
+import { Link } from "react-router-dom";
 const initialState = {
   password: "",
   username: "",
@@ -42,7 +43,9 @@ const Register = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
             alt=""
           />
-          <button className="loginButton">Sign In</button>
+          <Link to="/" className="link">
+            <button className="loginButton">Sign In</button>
+          </Link>
         </div>
       </div>
       <div className="container">

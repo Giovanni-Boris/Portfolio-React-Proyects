@@ -19,7 +19,7 @@ const Messenger = () => {
   const socket = useRef();
   useEffect(() => {
     console.log("sockt connectd in our backend");
-    socket.current = io("ws://socket-messenger.onrender.com");
+    socket.current = io("https://socket-messenger.onrender.com");
     socket.current.on("getMessage", (data) => {
       setArrivalMessage({
         sender: data.senderId,

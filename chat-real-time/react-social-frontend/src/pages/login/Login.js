@@ -29,14 +29,14 @@ const Login = () => {
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleSubmit}>
             <input
-              placeholder="Email"
+              placeholder="Use boris@gmail.com"
               type="email"
               className="loginInput"
               ref={email}
               required
             />
             <input
-              placeholder="Password"
+              placeholder="Use  123456"
               type="password"
               className="loginInput"
               ref={password}

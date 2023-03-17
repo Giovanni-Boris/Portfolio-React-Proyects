@@ -3,7 +3,7 @@ import Topbar from "../../components/topbar/Topbar";
 import Conversation from "../../components/conversations/Conversation";
 import Message from "../../components/message/Message";
 import ChatOnline from "../../components/chatOnline/ChatOnline";
-import axios from "axios";
+import { publicRequest } from "../../requestMethods";
 import { AuthContext } from "../../context/AuthContext";
 import { useState, useEffect, useContext, useRef } from "react";
 import { io } from "socket.io-client";
@@ -48,7 +48,7 @@ const Messenger = () => {
     //console.log("user.id", user._id);
     const getConversation = async () => {
       try {
-        const res = await axios.get("/conversations/" + user._id);
+        const res = await publicRequest.get("/conversations/" + user._id);
         setConversations(res.data);
       } catch (err) {
         console.log(err);
@@ -62,7 +62,7 @@ const Messenger = () => {
     if (!currentChat) return;
     const getMessages = async () => {
       try {
-        const res = await axios.get("/messages/" + currentChat._id);
+        const res = await publicRequest.get("/messages/" + currentChat._id);
         setMessages(res.data);
       } catch (err) {
         console.log(err);
@@ -91,7 +91,7 @@ const Messenger = () => {
     });
 
     try {
-      const res = await axios.post("/messages", message);
+      const res = await publicRequest.post("/messages", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {

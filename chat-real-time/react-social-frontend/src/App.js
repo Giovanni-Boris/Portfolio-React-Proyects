@@ -5,7 +5,7 @@ import Register from "./pages/register/Register";
 import { useContext } from "react";
 import Messenger from "./pages/messenger/Messenger";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,

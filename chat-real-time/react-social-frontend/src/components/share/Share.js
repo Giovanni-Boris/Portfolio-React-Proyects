@@ -6,7 +6,7 @@ import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useContext, useState, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import axios from "axios";
+import { publicRequest } from "../../requestMethods";
 
 const Share = () => {
   const { user } = useContext(AuthContext);
@@ -27,14 +27,14 @@ const Share = () => {
       data.append("file", file, fileName);
       newPost.img = fileName;
       try {
-        await axios.post("/upload", data);
+        await publicRequest.post("/upload", data);
         window.location.reload();
       } catch (err) {
         console.log(err);
       }
     }
     try {
-      await axios.post("/posts", newPost);
+      await publicRequest.post("/posts", newPost);
     } catch (err) {
       console.log(err);
     }

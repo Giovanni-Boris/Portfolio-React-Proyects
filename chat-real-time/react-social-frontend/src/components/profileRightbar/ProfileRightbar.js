@@ -1,5 +1,5 @@
 import "./profileRightbar.css";
-import axios from "axios";
+import { publicRequest } from "../../requestMethods";
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -11,16 +11,17 @@ const ProfileRightbar = ({ user }) => {
   const { user: currentUser, dispatch } = useContext(AuthContext);
   const [followed, setFollowed] = useState(false);
   useEffect(() => {
-    console.log("Renderizando");
     setFollowed(currentUser.followings.includes(user?._id));
   }, [currentUser, user?._id]);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user._id) return;
     const getFriends = async () => {
       try {
         //console.log("error1");
-        const friendList = await axios.get("/users/friends/" + user._id);
+        const friendList = await publicRequest.get(
+          "/users/friends/" + user._id
+        );
         setFriends(friendList.data);
       } catch (err) {
         //console.log("error");
@@ -30,15 +31,14 @@ const ProfileRightbar = ({ user }) => {
     getFriends();
   }, [user]);
   const handleClick = async (e) => {
-    console.log(followed);
     try {
       if (followed) {
-        await axios.put(`/users/${user._id}/unfollow`, {
+        await publicRequest.put(`/users/${user._id}/unfollow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "UNFOLLOW", payload: user._id });
       } else {
-        await axios.put(`/users/${user._id}/follow`, {
+        await publicRequest.put(`/users/${user._id}/follow`, {
           userId: currentUser._id,
         });
         dispatch({ type: "FOLLOW", payload: user._id });

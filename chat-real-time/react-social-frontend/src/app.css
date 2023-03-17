@@ -3,3 +3,8 @@
 	font-family: "Roboto", sans-serif;
 	box-sizing: border-box;
 }
+
+a {
+	list-style: none;
+	color: inherit;
+}

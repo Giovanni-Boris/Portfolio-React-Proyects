@@ -23,9 +23,6 @@ var corsOption = {
 	optionsSuccessStatus: 200,
 };
 app.use(cors({ corsOption }));
-const uri = `mongodb+srv://boris-social:qj1DKhAfBDs5gwLI@cluster0.gyngb.mongodb.net/social?retryWrites=true&w=majority
-
-`;
 
 const option = { useNewUrlParser: true, useUnifiedTopology: true };
 
@@ -52,7 +49,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
 	try {
-		console.log("hello");
 		res.status(200).json("File uploaded sucessfully");
 	} catch (err) {
 		console.log(err);
@@ -65,6 +61,6 @@ app.use("/api/posts", postRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 
-app.listen(8800, () => {
-	console.log("Backend server is running! ", 8888);
+app.listen(process.env.PORT || 8800, () => {
+	console.log("Backend server is running! ", process.env.PORT || 8800);
 });

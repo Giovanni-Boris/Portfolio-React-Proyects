@@ -27,14 +27,14 @@ const Login = () => {
       <form className="loginForm" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="email"
+          placeholder="Use admin@gmail.com"
           className="loginInput"
           onChange={handleChange}
           name="email"
         />
         <input
           type="password"
-          placeholder="password"
+          placeholder="Use this password 123456"
           className="loginInput"
           onChange={handleChange}
           name="password"

@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Routes,
   Route,
   Navigate,
@@ -11,12 +11,11 @@ import { AuthContext } from "./context/authContext/AuthContext";
 import { useContext } from "react";
 function App() {
   const { user } = useContext(AuthContext);
-  console.log("Rendering");
   return (
     <Router>
       <Routes>
         <Route
-          path="/login"
+          path="/"
           element={!user ? <Login /> : <Navigate to="/dashboard/" />}
         />
         <Route

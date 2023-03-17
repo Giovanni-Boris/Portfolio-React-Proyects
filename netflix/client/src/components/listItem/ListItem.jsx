@@ -28,7 +28,7 @@ const ListItem = ({ index, item }) => {
   return (
     <div
       className="listItem"
-      style={{ left: isHovered && index * 225 + 25 + index * 2.5 }}
+      style={{ left: isHovered && index * 225 - 25 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}

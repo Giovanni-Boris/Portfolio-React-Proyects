@@ -13,7 +13,9 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await userRequest.get(
-          `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`
+          `lists?${type ? "type=" + type + "&" : ""}${
+            genre ? "genre=" + genre : ""
+          }`
         );
         console.log(res.data);
         setlists(res.data);

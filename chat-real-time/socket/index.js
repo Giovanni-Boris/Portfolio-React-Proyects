@@ -1,9 +1,25 @@
-const io = require("socket.io")(process.env.PORT || 8900, {
-  cors: {
-    origins: "*",
-  },
+const express = require("express");
+const socketIO = require("socket.io");
+const cors = require("cors");
+const PORT = process.env.PORT || 8900;
+const app = express();
+
+var corsOption = {
+  origin: "#",
+  optionsSuccessStatus: 200,
+};
+app.use(cors({ corsOption }));
+
+const server = app.listen(PORT, () => {
+  console.log("Listening on port: " + PORT);
 });
 
+const io = require("socket.io")(server, {
+  cors: {
+    origins: "*:*",
+    methods: ["GET", "POST"],
+  },
+});
 let users = [];
 
 const addUser = (userId, socketId) => {
@@ -21,7 +37,7 @@ const getUser = (userId) => {
 
 io.on("connection", (socket) => {
   //when connect
-  console.log(" a user connected. ", process.env.PORT);
+  console.log(" a user connected. ");
   //io.emit("welcome","hello this is socket server");
   //take userId and socketId from user
   socket.on("addUser", (userId) => {

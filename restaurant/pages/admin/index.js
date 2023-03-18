@@ -24,7 +24,6 @@ const Index = ({ orders, products }) => {
       const res = await publicRequest.put("orders/" + id, {
         status: currentStatus + 1,
       });
-      console.log(orderList, res.data);
       setOrderList([
         res.data,
         ...orderList.filter((order) => order._id !== id),

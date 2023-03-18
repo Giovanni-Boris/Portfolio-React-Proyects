@@ -14,7 +14,7 @@ const HeroImg = () => {
         <h1>I'M FULLSTACK DEVELOPER</h1>
         <div>
           <Link to="/project" className="btn">
-            Project
+            Projects
           </Link>
           <Link to="/contact" className="btn light">
             Contact

@@ -26,14 +26,14 @@ ul {
   padding: 12px 32px;
   font-size: 1rem;
   text-transform: uppercase;
-  background: #2a10f7;
-  color: #222;
+  background: #ea7935;
+  color: #fff;
   border: 1px solid #fff;
   font-weight: 600;
   cursor: pointer;
 }
 
-.btn-light {
+.btn.light {
   background: transparent;
   color: #fff;
 }

@@ -9,10 +9,10 @@ const WorkCard = ({ imgsrc, title, text, view, source }) => {
       <div className="pro-details">
         <p>{text}</p>
         <div className="pro-btns">
-          <NavLink to={view} className="btn">
+          <NavLink to={view} className="btn" target="_blank">
             View
           </NavLink>
-          <NavLink to={source} className="btn">
+          <NavLink to={source} className="btn" target="_blank">
             Source
           </NavLink>
         </div>

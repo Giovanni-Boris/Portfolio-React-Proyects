@@ -1,6 +1,8 @@
 import React from "react";
 import "./form.css";
 import { useForm } from "../../hooks/useForm";
+import Loader from "../loader/Loader";
+import Message from "../Message";
 
 const initialForm = {
   name: "",
@@ -14,28 +16,27 @@ const validationsForm = (form) => {
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
   let regexComments = /^.{1,255}$/;
   if (!form.name.trim()) {
-    errors.name = "El campo Nombre es requerido";
+    errors.name = "The Name field is required";
   } else if (!regexName.test(form.name.trim())) {
-    errors.name = "El campo 'Nombre' solo acepta letras y espacios en blanco";
+    errors.name = "The 'Name' field only accepts letters and whitespace";
   }
   if (!form.email.trim()) {
-    errors.email = "El campo Email es requerido";
+    errors.email = "The Email field is required";
   } else if (!regexEmail.test(form.email.trim())) {
-    errors.email = "El campo 'Email' es incorrecto";
+    errors.email = "The 'Email' field is incorrect";
   }
   if (!form.subject.trim()) {
-    errors.subject = "El campo Asunto a tratar es requerido";
+    errors.subject = "The Subject field is required";
   }
   if (!form.comments.trim()) {
-    errors.comments = "El campo Comentario es requerido";
+    errors.comments = "The Comment field is required";
   } else if (!regexComments.test(form.comments.trim())) {
-    errors.comments =
-      "El campo 'Comentarios' no debe acceder los 255 caracteres";
+    errors.comments = "The 'Comments' field must not exceed 255 characters";
   }
   return errors;
 };
 let styles = {
-  fontWeight: "bold",
+  fontWeight: "400",
   color: "#dc3545",
 };
 
@@ -61,6 +62,7 @@ const Form = () => {
           value={form.name}
           required
         />
+        {errors.name && <p style={styles}>{errors.name}</p>}
         <label>Email</label>
         <input
           type="email"
@@ -70,6 +72,7 @@ const Form = () => {
           value={form.email}
           required
         />
+        {errors.email && <p style={styles}>{errors.email}</p>}
         <label>Subject</label>
         <input
           type="text"
@@ -79,6 +82,7 @@ const Form = () => {
           value={form.subject}
           required
         />
+        {errors.subject && <p style={styles}>{errors.subject}</p>}
         <label>Message</label>
         <textarea
           rows="6"
@@ -89,9 +93,11 @@ const Form = () => {
           value={form.comments}
           required
         />
+        {errors.comments && <p style={styles}>{errors.comments}</p>}
         <button className="btn" type="submit">
-          Submit
+          {loading ? <Loader /> : "Submit"}
         </button>
+        {response && <Message msg="The data has been sent" bgColor="#f12e31" />}
       </form>
     </div>
   );

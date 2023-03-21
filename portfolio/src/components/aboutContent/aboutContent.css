@@ -1,6 +1,9 @@
 .about {
   width: 100%;
   margin: 3rem 0;
+}
+
+.about .top {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -95,13 +95,13 @@ const Login = () => {
         <Form onSubmit={handleSubmit}>
           <Input
             name="username"
-            placeholder="username"
+            placeholder="Use this admin"
             onChange={handleChange}
           />
           <Input
             name="password"
             type="password"
-            placeholder="password"
+            placeholder="Use this 123456"
             onChange={handleChange}
           />
           <Button type="submit" disabled={isFetching}>

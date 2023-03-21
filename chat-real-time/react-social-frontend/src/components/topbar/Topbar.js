@@ -13,8 +13,8 @@ const Topbar = () => {
 	return (
 		<div className="topbarContainer">
 			<div className="topbarLeft">
-				<Link to="/" style={{ textDecoration: "none" }}>
-					<span className="logo">boris social</span>
+				<Link to="/messenger" style={{ textDecoration: "none" }}>
+					<span className="logo">messenger</span>
 				</Link>
 			</div>
 			<div className="topbarCenter">

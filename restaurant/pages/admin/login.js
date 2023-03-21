@@ -34,13 +34,13 @@ const Login = () => {
         <h1>Admin Dashboard</h1>
         <input
           name="username"
-          placeholder="username"
+          placeholder="username is admin"
           className={styles.input}
           onChange={handleChange}
         />
         <input
           name="password"
-          placeholder="password"
+          placeholder="password is 123456"
           type="password"
           className={styles.input}
           onChange={handleChange}

@@ -34,6 +34,7 @@ ul {
 }
 
 .btn.light {
+  margin-top: 10px;
   background: transparent;
   color: #fff;
 }

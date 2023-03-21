@@ -8,7 +8,15 @@ const ProjectCardData = [
   {
     imgsrc: pro1,
     title: "Ecommerce Website Mern",
-    text: "This application was made using the MERN stack, in the backend some libraries were used such as json web token, stripe to handle payments and crypto Js to encrypt passwords and to save the images firebase was used and in the frontend libraries such as styled components, redux toolkit and redux persist. If the application does not show the products, just wait a few seconds",
+    text: `This application was made using the MERN stack, 
+           in the backend some libraries were used such as 
+           json web token, stripe to handle payments and 
+           crypto Js to encrypt passwords and to save the 
+           images firebase was used and in the frontend 
+           libraries such as styled components, redux toolkit 
+           and redux persist. If the application does not show 
+           the products, just wait a few seconds. Please use 
+            admin as Username and 123456 as password`,
     view: "https://ecommerce-boris-giovanni.netlify.app",
     source:
       "https://github.com/Giovanni-Boris/Portfolio-React-Proyects/tree/main/ecommerce",

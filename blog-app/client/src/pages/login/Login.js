@@ -31,7 +31,7 @@ const Login = () => {
         <input
           type="text"
           className="loginInput"
-          placeholder="Enter your username..."
+          placeholder="Use boris"
           name="username"
           onChange={handleChange}
         />
@@ -39,7 +39,7 @@ const Login = () => {
         <input
           type="password"
           className="loginInput"
-          placeholder="Enter your password..."
+          placeholder="Use 123456"
           name="password"
           onChange={handleChange}
         />

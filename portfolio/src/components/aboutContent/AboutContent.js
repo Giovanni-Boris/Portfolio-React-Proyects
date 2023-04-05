@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import React1 from "../../assets/project4.png";
 import React2 from "../../assets/project1.png";
 import Skills from "../skills/Skills";
-
+import pdf from "../../assets/BORIS.pdf";
 const AboutContent = () => {
   return (
     <div className="about">
@@ -15,9 +15,16 @@ const AboutContent = () => {
           <Link to="/contact">
             <button className="btn">Contact</button>
           </Link>
-          <Link to="/contact">
-            <button className="btn light">Download my CV</button>
-          </Link>
+          <button className={`btn light`}>
+            <a
+              href={pdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="boriscv.pdf"
+            >
+              Download my CV
+            </a>
+          </button>
         </div>
         <div className="right">
           <div className="img-container">

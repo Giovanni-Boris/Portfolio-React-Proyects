@@ -19,17 +19,17 @@ mongoose.set("strictQuery", false);
 //console.log(process.env.URL_MONGO)
 // cors
 var corsOption = {
-	origin: "#",
-	optionsSuccessStatus: 200,
+  origin: "#",
+  optionsSuccessStatus: 200,
 };
 app.use(cors({ corsOption }));
 
 const option = { useNewUrlParser: true, useUnifiedTopology: true };
 
 mongoose
-	.connect(process.env.URL_MONGO, option)
-	.then(() => console.log("Conected to mongoDB "))
-	.catch((error) => console.log("Error db: ", error));
+  .connect(process.env.URL_MONGO, option)
+  .then(() => console.log("Conected to mongoDB "))
+  .catch((error) => console.log("Error db: ", error));
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
@@ -39,20 +39,20 @@ app.use(helmet());
 app.use(morgan("common"));
 
 const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, "public/images");
-	},
-	filename: (req, file, cb) => {
-		cb(null, file.originalname);
-	},
+  destination: (req, file, cb) => {
+    cb(null, "public/images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
 });
 const upload = multer({ storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
-	try {
-		res.status(200).json("File uploaded sucessfully");
-	} catch (err) {
-		console.log(err);
-	}
+  try {
+    res.status(200).json("File uploaded sucessfully");
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.use("/api/users", userRoute);
@@ -62,5 +62,5 @@ app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
 
 app.listen(process.env.PORT || 8800, () => {
-	console.log("Backend server is running! ", process.env.PORT || 8800);
+  console.log("Backend server is running! ", process.env.PORT || 8800);
 });

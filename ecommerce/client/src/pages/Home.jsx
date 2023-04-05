@@ -7,17 +7,17 @@ import Products from "../components/Products";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 const Home = () => {
-	return (
-		<div>
-			<Announcement />
-			<Navbar />
-			<Slider />
-			<Categories />
-			<Products />
-			<NewsLetter />
-			<Footer />
-		</div>
-	);
+  return (
+    <div>
+      <Announcement />
+      <Navbar />
+      <Slider />
+      <Categories />
+      <Products />
+      <NewsLetter />
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;

@@ -6,16 +6,16 @@ import Rightbar from "../../components/rightbar/Rightbar";
 import "./home.css";
 
 const Home = () => {
-	return (
-		<>
-			<Topbar />
-			<div className="homeContainer">
-				<Sidebar />
-				<Feed />
-				<Rightbar />
-			</div>
-		</>
-	);
+  return (
+    <>
+      <Topbar />
+      <div className="homeContainer">
+        <Sidebar />
+        <Feed />
+        <Rightbar />
+      </div>
+    </>
+  );
 };
 
 export default Home;

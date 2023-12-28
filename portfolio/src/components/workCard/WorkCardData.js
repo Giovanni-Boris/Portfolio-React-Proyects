@@ -23,19 +23,19 @@ const ProjectCardData = [
   },
   {
     imgsrc: pro2,
-    title: "Blog Website MERN",
-    text: "This application made in MERN is a blog where you can upload your anecdotes, you can delete or update them. The backend was built using json web token to give more security, express, bycript to encrypt my passwords and multer was used to save the images. On the frontend to manage the status, context api and axios for the requests. If your posts do not load please wait a few seconds. If you want to login use boris as USERNAME and 123456 as PASSWORD ",
-    view: "https://blog-app-bori-giovanni.netlify.app",
+    title: "Dashboard Website ASP.NET and Angular 17",
+    text: "This application made in ASP.NET and angular stack is a dashboard where you can create users, products and orders, you can delete or update them. The backend was built using json web token to give more security, asp.net core v6, EntityFrameworkCore to manage the users and cloudinary was used to save the images. On the frontend  NGRX for global state and metareducers to save de data into sessionstorage. If the side does not load please wait a few seconds. If you want to login use 1234 as USERNAME and @String2 as PASSWORD  or you can create your own account",
+    view: "https://net-angular-dashboard.netlify.app/",
     source:
-      "https://github.com/Giovanni-Boris/Portfolio-React-Proyects/tree/main/blog-app",
+      "https://github.com/Giovanni-Boris/Angular-Projects/tree/main/dashboard",
   },
   {
     imgsrc: pro3,
-    title: "Chat real time and facebook clone using MERN",
-    text: "This facebook clone uses the MERN stack and also a real time chat like messenger using sockets. In the case of the backend it was built using libraries like bycript and multer to save images. On the frontend, context api is used to handle the global context and axios for reqeustrs. In the case of sockets, a separate server was used using socket.id. If you want to try the messenger first, wait a few seconds, log in with this information EMAIL: boris@gmail.com PASS:123456 and  in another private tab with EMAIL: lucas@gmail.com PASS: 123456 ",
-    view: "https://facebook-boris-clone.netlify.app/",
+    title: "Chat real time and facebook clone using Spring Boot and Angular 16",
+    text: "This facebook clone uses the Spring Boot and angular stack and also a real time chat like messenger using sockets. In the case of the backend it was built using libraries like spring-security and json web token to give more security. On the frontend, NGRX is used to handle the global context and firebase to save images. In the case of sockets, a separate server was used using WebSocketMessageBroker . If you want to try the messenger first, wait a few seconds, log in with this information EMAIL: boris@gmail.com PASS:123456 and  in another private tab with EMAIL: luis@gmail.com PASS: 123456 ",
+    view: "https://angular-facebook-spring-boot.netlify.app/",
     source:
-      "https://github.com/Giovanni-Boris/Portfolio-React-Proyects/tree/main/chat-real-time",
+      "https://github.com/Giovanni-Boris/Angular-Projects/tree/main/facebook",
   },
   {
     imgsrc: pro4,

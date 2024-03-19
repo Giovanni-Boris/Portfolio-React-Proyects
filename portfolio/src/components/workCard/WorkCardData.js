@@ -33,7 +33,7 @@ const ProjectCardData = [
     imgsrc: pro3,
     title: "Chat real time and facebook clone using Spring Boot and Angular 16",
     text: "This facebook clone uses the Spring Boot and angular stack and also a real time chat like messenger using sockets. In the case of the backend it was built using libraries like spring-security and json web token to give more security. On the frontend, NGRX is used to handle the global context and firebase to save images. In the case of sockets, a separate server was used using WebSocketMessageBroker . If you want to try the messenger first, wait a few seconds, log in with this information EMAIL: boris@gmail.com PASS:123456 and  in another private tab with EMAIL: luis@gmail.com PASS: 123456 ",
-    view: "https://angular-facebook-spring-boot.netlify.app/",
+    view: "https://angular-spring-facebook.netlify.app/",
     source:
       "https://github.com/Giovanni-Boris/Angular-Projects/tree/main/facebook",
   },
@@ -47,7 +47,7 @@ const ProjectCardData = [
             for requests and to handle the genrral context api
             state with reducers. If you want login use 
             EMAIL: admin@gmail.com and PASSWORD: 123456    `,
-    view: "https://netflix-clone-boris.netlify.app/",
+    view: "https://netflix-react-mern.netlify.app/",
     source:
       "https://github.com/Giovanni-Boris/Portfolio-React-Proyects/tree/main/netflix",
   },

@@ -37,7 +37,7 @@ const ProjectCardData = [
     source:
       "https://github.com/Giovanni-Boris/Angular-Projects/tree/main/facebook",
   },
-  {
+  /*{
     imgsrc: pro4,
     title: "Netflix application using MERN",
     text: `This MERN app is a Netflix clone. In this case 
@@ -50,7 +50,7 @@ const ProjectCardData = [
     view: "https://netflix-react-mern.netlify.app/",
     source:
       "https://github.com/Giovanni-Boris/Portfolio-React-Proyects/tree/main/netflix",
-  },
+  },*/
   {
     imgsrc: pro5,
     title: "Restaurant application using NextJS",
